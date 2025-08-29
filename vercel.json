@@ -1,0 +1,290 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/us-phone-number-generator",
+      "destination": "/us-phone-number-generator.html"
+    },
+    {
+      "source": "/canada-phone-number-generator",
+      "destination": "/canada-phone-number-generator.html"
+    },
+    {
+      "source": "/mexico-phone-number-generator",
+      "destination": "/mexico-phone-number-generator.html"
+    },
+    {
+      "source": "/brazil-phone-number-generator",
+      "destination": "/brazil-phone-number-generator.html"
+    },
+    {
+      "source": "/argentina-phone-number-generator",
+      "destination": "/argentina-phone-number-generator.html"
+    },
+    {
+      "source": "/chile-phone-number-generator",
+      "destination": "/chile-phone-number-generator.html"
+    },
+    {
+      "source": "/colombia-phone-number-generator",
+      "destination": "/colombia-phone-number-generator.html"
+    },
+    {
+      "source": "/peru-phone-number-generator",
+      "destination": "/peru-phone-number-generator.html"
+    },
+    {
+      "source": "/uk-phone-number-generator",
+      "destination": "/uk-phone-number-generator.html"
+    },
+    {
+      "source": "/germany-phone-number-generator",
+      "destination": "/germany-phone-number-generator.html"
+    },
+    {
+      "source": "/france-phone-number-generator",
+      "destination": "/france-phone-number-generator.html"
+    },
+    {
+      "source": "/spain-phone-number-generator",
+      "destination": "/spain-phone-number-generator.html"
+    },
+    {
+      "source": "/italy-phone-number-generator",
+      "destination": "/italy-phone-number-generator.html"
+    },
+    {
+      "source": "/portugal-phone-number-generator",
+      "destination": "/portugal-phone-number-generator.html"
+    },
+    {
+      "source": "/greece-phone-number-generator",
+      "destination": "/greece-phone-number-generator.html"
+    },
+    {
+      "source": "/ireland-phone-number-generator",
+      "destination": "/ireland-phone-number-generator.html"
+    },
+    {
+      "source": "/netherlands-phone-number-generator",
+      "destination": "/netherlands-phone-number-generator.html"
+    },
+    {
+      "source": "/belgium-phone-number-generator",
+      "destination": "/belgium-phone-number-generator.html"
+    },
+    {
+      "source": "/sweden-phone-number-generator",
+      "destination": "/sweden-phone-number-generator.html"
+    },
+    {
+      "source": "/norway-phone-number-generator",
+      "destination": "/norway-phone-number-generator.html"
+    },
+    {
+      "source": "/denmark-phone-number-generator",
+      "destination": "/denmark-phone-number-generator.html"
+    },
+    {
+      "source": "/finland-phone-number-generator",
+      "destination": "/finland-phone-number-generator.html"
+    },
+    {
+      "source": "/switzerland-phone-number-generator",
+      "destination": "/switzerland-phone-number-generator.html"
+    },
+    {
+      "source": "/austria-phone-number-generator",
+      "destination": "/austria-phone-number-generator.html"
+    },
+    {
+      "source": "/poland-phone-number-generator",
+      "destination": "/poland-phone-number-generator.html"
+    },
+    {
+      "source": "/ukraine-phone-number-generator",
+      "destination": "/ukraine-phone-number-generator.html"
+    },
+    {
+      "source": "/china-phone-number-generator",
+      "destination": "/china-phone-number-generator.html"
+    },
+    {
+      "source": "/india-phone-number-generator",
+      "destination": "/india-phone-number-generator.html"
+    },
+    {
+      "source": "/japan-phone-number-generator",
+      "destination": "/japan-phone-number-generator.html"
+    },
+    {
+      "source": "/south-korea-phone-number-generator",
+      "destination": "/south-korea-phone-number-generator.html"
+    },
+    {
+      "source": "/hong-kong-phone-number-generator",
+      "destination": "/hong-kong-phone-number-generator.html"
+    },
+    {
+      "source": "/taiwan-phone-number-generator",
+      "destination": "/taiwan-phone-number-generator.html"
+    },
+    {
+      "source": "/singapore-phone-number-generator",
+      "destination": "/singapore-phone-number-generator.html"
+    },
+    {
+      "source": "/malaysia-phone-number-generator",
+      "destination": "/malaysia-phone-number-generator.html"
+    },
+    {
+      "source": "/thailand-phone-number-generator",
+      "destination": "/thailand-phone-number-generator.html"
+    },
+    {
+      "source": "/vietnam-phone-number-generator",
+      "destination": "/vietnam-phone-number-generator.html"
+    },
+    {
+      "source": "/philippines-phone-number-generator",
+      "destination": "/philippines-phone-number-generator.html"
+    },
+    {
+      "source": "/indonesia-phone-number-generator",
+      "destination": "/indonesia-phone-number-generator.html"
+    },
+    {
+      "source": "/pakistan-phone-number-generator",
+      "destination": "/pakistan-phone-number-generator.html"
+    },
+    {
+      "source": "/bangladesh-phone-number-generator",
+      "destination": "/bangladesh-phone-number-generator.html"
+    },
+    {
+      "source": "/sri-lanka-phone-number-generator",
+      "destination": "/sri-lanka-phone-number-generator.html"
+    },
+    {
+      "source": "/nepal-phone-number-generator",
+      "destination": "/nepal-phone-number-generator.html"
+    },
+    {
+      "source": "/turkey-phone-number-generator",
+      "destination": "/turkey-phone-number-generator.html"
+    },
+    {
+      "source": "/saudi-arabia-phone-number-generator",
+      "destination": "/saudi-arabia-phone-number-generator.html"
+    },
+    {
+      "source": "/uae-phone-number-generator",
+      "destination": "/uae-phone-number-generator.html"
+    },
+    {
+      "source": "/qatar-phone-number-generator",
+      "destination": "/qatar-phone-number-generator.html"
+    },
+    {
+      "source": "/kuwait-phone-number-generator",
+      "destination": "/kuwait-phone-number-generator.html"
+    },
+    {
+      "source": "/oman-phone-number-generator",
+      "destination": "/oman-phone-number-generator.html"
+    },
+    {
+      "source": "/israel-phone-number-generator",
+      "destination": "/israel-phone-number-generator.html"
+    },
+    {
+      "source": "/iran-phone-number-generator",
+      "destination": "/iran-phone-number-generator.html"
+    },
+    {
+      "source": "/iraq-phone-number-generator",
+      "destination": "/iraq-phone-number-generator.html"
+    },
+    {
+      "source": "/south-africa-phone-number-generator",
+      "destination": "/south-africa-phone-number-generator.html"
+    },
+    {
+      "source": "/nigeria-phone-number-generator",
+      "destination": "/nigeria-phone-number-generator.html"
+    },
+    {
+      "source": "/kenya-phone-number-generator",
+      "destination": "/kenya-phone-number-generator.html"
+    },
+    {
+      "source": "/egypt-phone-number-generator",
+      "destination": "/egypt-phone-number-generator.html"
+    },
+    {
+      "source": "/morocco-phone-number-generator",
+      "destination": "/morocco-phone-number-generator.html"
+    },
+    {
+      "source": "/algeria-phone-number-generator",
+      "destination": "/algeria-phone-number-generator.html"
+    },
+    {
+      "source": "/tunisia-phone-number-generator",
+      "destination": "/tunisia-phone-number-generator.html"
+    },
+    {
+      "source": "/ethiopia-phone-number-generator",
+      "destination": "/ethiopia-phone-number-generator.html"
+    },
+    {
+      "source": "/ghana-phone-number-generator",
+      "destination": "/ghana-phone-number-generator.html"
+    },
+    {
+      "source": "/australia-phone-number-generator",
+      "destination": "/australia-phone-number-generator.html"
+    },
+    {
+      "source": "/new-zealand-phone-number-generator",
+      "destination": "/new-zealand-phone-number-generator.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600"
+        }
+      ]
+    }
+  ]
+}

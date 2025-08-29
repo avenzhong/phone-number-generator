@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ethiopia phone number generator | Free generator</title>
+  <meta name="description" content="Ethiopia: +251 9X XXX XXXX (mobile) or +251 11 XXX XXXX (Addis Ababa). Not real/assigned numbers." />
+  <link rel="canonical" href="https://www.example.com/ethiopia-phone-number-generator" />
+  <meta name="robots" content="index,follow" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; margin: 0; padding: 24px 16px; max-width: 780px; line-height: 1.6; }
+    a { color: #0e7490; }
+    .btn { display:inline-block; padding:10px 14px; border:1px solid #06b6d4; border-radius:999px; text-decoration:none; background:#ecfeff; font-weight:600; cursor:pointer; }
+    .box { border:1px solid #e5e7eb; border-radius:14px; padding:16px; background:#fff; }
+    h1 { text-transform: lowercase; margin: 0 0 8px; }
+    h2 { margin: 18px 0 8px; text-transform: lowercase; }
+    .mini { color:#6b7280; font-size:14px; }
+    code { padding: 2px 6px; border-radius:8px; background:#f3f4f6; display:inline-block; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "ethiopia phone number generator", "url": "https://www.example.com/ethiopia-phone-number-generator", "description": "Generate ethiopia\u2011style phone numbers for testing.", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/"}, {"@type": "ListItem", "position": 2, "name": "ethiopia phone number generator", "item": "https://www.example.com/ethiopia-phone-number-generator"}]}}</script>
+</head>
+<body>
+  <nav class="mini"><a href="index.html">← Back to phone number generator (all countries)</a></nav>
+  <header>
+    <h1>ethiopia phone number generator</h1>
+    <p class="mini">For testing and education only. We do <strong>not</strong> provide real, active numbers or verification codes.</p>
+  </header>
+
+  <main class="box">
+    <h2>about this generator</h2>
+    <p>Ethiopia: +251 9X XXX XXXX (mobile) or +251 11 XXX XXXX (Addis Ababa).</p>
+
+    <h2>try a few</h2>
+    <p id="samples" aria-live="polite">Loading…</p>
+    <button class="btn" id="gen">generate more</button>
+  </main>
+
+  <footer class="mini" style="margin-top:18px">
+    © <span id="year">2025</span> Phone Number Generator · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+  </footer>
+
+  <script>
+    // Replace each X with a random digit 0-9
+    function fillDigits(pattern) {
+      return pattern.replace(/X/g, () => Math.floor(Math.random()*10));
+    }
+    const PATTERNS = ["+251 9X XXX XXXX", "+251 11 XXX XXXX"];
+
+    function makeSample() {
+      const p = PATTERNS[Math.floor(Math.random()*PATTERNS.length)];
+      return fillDigits(p);
+    }
+    function render(n=5) {
+      const out = Array.from({length:n}, makeSample).map(s=>`<code>${s}</code>`).join('<br>');
+      document.getElementById('samples').innerHTML = out;
+    }
+    render();
+    document.getElementById('gen').addEventListener('click', ()=>render());
+  </script>
+</body>
+</html>
