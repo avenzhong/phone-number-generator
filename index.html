@@ -8,7 +8,77 @@
   <link rel="canonical" href="https://www.example.com/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="preload" href="assets/styles.css" as="style" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />’
+  <style>
+    /* === 入口按钮高亮（不改 HTML，仅样式） === */
+
+/* 卡片容器（如果你的国家列表是 .country-card，可保留；没有也不影响） */
+.country-card {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(2,6,23,.06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.country-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(2,6,23,.10); border-color: rgba(99,102,241,.35); }
+.country-card h2 { margin: 0 0 8px; font: 700 18px/1.3 Inter, system-ui, sans-serif; color: #111827; }
+.country-card p { color: #4b5563; }
+
+/* 把“卡片内的第一个链接”样式化为主按钮（不依赖你原有 class 名） */
+.country-card a:first-of-type,
+.country-card button:first-of-type {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 14px; border-radius: 12px;
+  background: #4f46e5; color: #fff !important; text-decoration: none;
+  font: 600 14px/1 Inter, system-ui, sans-serif;
+  box-shadow: 0 8px 18px rgba(79,70,229,.22);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+  border: 0;
+}
+.country-card a:first-of-type:hover,
+.country-card button:first-of-type:hover { background: #4338ca; transform: translateY(-1px); }
+.country-card a:first-of-type:focus-visible,
+.country-card button:first-of-type:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.22); }
+
+/* 如果你的入口本来就有 class（btn/button/action），也统一美化 */
+a.btn, a.button, a.action, button.btn, button.button, button.action {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 14px; border-radius: 12px;
+  background: #4f46e5; color: #fff !important; text-decoration: none;
+  font: 600 14px/1 Inter, system-ui, sans-serif;
+  box-shadow: 0 8px 18px rgba(79,70,229,.22);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+  border: 0;
+}
+a.btn:hover, a.button:hover, a.action:hover,
+button.btn:hover, button.button:hover, button.action:hover { background: #4338ca; transform: translateY(-1px); }
+a.btn:focus-visible, a.button:focus-visible, a.action:focus-visible,
+button.btn:focus-visible, button.button:focus-visible, button.action:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.22); }
+
+/* 把“非主按钮的其他链接”做成次级样式，避免看起来像纯文本不易点 */
+.country-card a:not(:first-of-type) {
+  display: inline-flex; align-items: center;
+  padding: 8px 10px; border-radius: 10px;
+  color: #4f46e5; background: #eef2ff; text-decoration: none;
+  font: 600 13px/1 Inter, system-ui, sans-serif;
+  transition: background .15s ease, color .15s ease;
+}
+.country-card a:not(:first-of-type):hover { background: #e0e7ff; color: #4338ca; }
+
+/* 保底：明确让所有可点击项的鼠标指针为手型 */
+.country-card a, .country-card button { cursor: pointer; }
+
+/* 搜索区与标题的可读性（不改结构） */
+.hero h1 { font: 800 clamp(28px,3.2vw,40px)/1.15 Inter, system-ui, sans-serif; color: #111827; margin: 0 0 8px; }
+.hero .lead { color: #4b5563; }
+
+/* 移动端间距友好 */
+@media (max-width: 640px) {
+  .country-card { padding: 16px; }
+  .country-card a:first-of-type { width: 100%; justify-content: center; }
+}
+  </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Phone Number Generator", "url": "https://www.example.com/", "description": "Generate valid-looking phone numbers for countries worldwide.", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "us phone number generator", "url": "https://www.example.com/us-phone-number-generator"}, {"@type": "ListItem", "position": 2, "name": "canada phone number generator", "url": "https://www.example.com/canada-phone-number-generator"}, {"@type": "ListItem", "position": 3, "name": "mexico phone number generator", "url": "https://www.example.com/mexico-phone-number-generator"}, {"@type": "ListItem", "position": 4, "name": "brazil phone number generator", "url": "https://www.example.com/brazil-phone-number-generator"}, {"@type": "ListItem", "position": 5, "name": "argentina phone number generator", "url": "https://www.example.com/argentina-phone-number-generator"}, {"@type": "ListItem", "position": 6, "name": "chile phone number generator", "url": "https://www.example.com/chile-phone-number-generator"}, {"@type": "ListItem", "position": 7, "name": "colombia phone number generator", "url": "https://www.example.com/colombia-phone-number-generator"}, {"@type": "ListItem", "position": 8, "name": "peru phone number generator", "url": "https://www.example.com/peru-phone-number-generator"}, {"@type": "ListItem", "position": 9, "name": "uk phone number generator", "url": "https://www.example.com/uk-phone-number-generator"}, {"@type": "ListItem", "position": 10, "name": "germany phone number generator", "url": "https://www.example.com/germany-phone-number-generator"}, {"@type": "ListItem", "position": 11, "name": "france phone number generator", "url": "https://www.example.com/france-phone-number-generator"}, {"@type": "ListItem", "position": 12, "name": "spain phone number generator", "url": "https://www.example.com/spain-phone-number-generator"}, {"@type": "ListItem", "position": 13, "name": "italy phone number generator", "url": "https://www.example.com/italy-phone-number-generator"}, {"@type": "ListItem", "position": 14, "name": "portugal phone number generator", "url": "https://www.example.com/portugal-phone-number-generator"}, {"@type": "ListItem", "position": 15, "name": "greece phone number generator", "url": "https://www.example.com/greece-phone-number-generator"}, {"@type": "ListItem", "position": 16, "name": "ireland phone number generator", "url": "https://www.example.com/ireland-phone-number-generator"}, {"@type": "ListItem", "position": 17, "name": "netherlands phone number generator", "url": "https://www.example.com/netherlands-phone-number-generator"}, {"@type": "ListItem", "position": 18, "name": "belgium phone number generator", "url": "https://www.example.com/belgium-phone-number-generator"}, {"@type": "ListItem", "position": 19, "name": "sweden phone number generator", "url": "https://www.example.com/sweden-phone-number-generator"}, {"@type": "ListItem", "position": 20, "name": "norway phone number generator", "url": "https://www.example.com/norway-phone-number-generator"}, {"@type": "ListItem", "position": 21, "name": "denmark phone number generator", "url": "https://www.example.com/denmark-phone-number-generator"}, {"@type": "ListItem", "position": 22, "name": "finland phone number generator", "url": "https://www.example.com/finland-phone-number-generator"}, {"@type": "ListItem", "position": 23, "name": "switzerland phone number generator", "url": "https://www.example.com/switzerland-phone-number-generator"}, {"@type": "ListItem", "position": 24, "name": "austria phone number generator", "url": "https://www.example.com/austria-phone-number-generator"}, {"@type": "ListItem", "position": 25, "name": "poland phone number generator", "url": "https://www.example.com/poland-phone-number-generator"}, {"@type": "ListItem", "position": 26, "name": "ukraine phone number generator", "url": "https://www.example.com/ukraine-phone-number-generator"}, {"@type": "ListItem", "position": 27, "name": "china phone number generator", "url": "https://www.example.com/china-phone-number-generator"}, {"@type": "ListItem", "position": 28, "name": "india phone number generator", "url": "https://www.example.com/india-phone-number-generator"}, {"@type": "ListItem", "position": 29, "name": "japan phone number generator", "url": "https://www.example.com/japan-phone-number-generator"}, {"@type": "ListItem", "position": 30, "name": "south-korea phone number generator", "url": "https://www.example.com/south-korea-phone-number-generator"}, {"@type": "ListItem", "position": 31, "name": "hong-kong phone number generator", "url": "https://www.example.com/hong-kong-phone-number-generator"}, {"@type": "ListItem", "position": 32, "name": "taiwan phone number generator", "url": "https://www.example.com/taiwan-phone-number-generator"}, {"@type": "ListItem", "position": 33, "name": "singapore phone number generator", "url": "https://www.example.com/singapore-phone-number-generator"}, {"@type": "ListItem", "position": 34, "name": "malaysia phone number generator", "url": "https://www.example.com/malaysia-phone-number-generator"}, {"@type": "ListItem", "position": 35, "name": "thailand phone number generator", "url": "https://www.example.com/thailand-phone-number-generator"}, {"@type": "ListItem", "position": 36, "name": "vietnam phone number generator", "url": "https://www.example.com/vietnam-phone-number-generator"}, {"@type": "ListItem", "position": 37, "name": "philippines phone number generator", "url": "https://www.example.com/philippines-phone-number-generator"}, {"@type": "ListItem", "position": 38, "name": "indonesia phone number generator", "url": "https://www.example.com/indonesia-phone-number-generator"}, {"@type": "ListItem", "position": 39, "name": "pakistan phone number generator", "url": "https://www.example.com/pakistan-phone-number-generator"}, {"@type": "ListItem", "position": 40, "name": "bangladesh phone number generator", "url": "https://www.example.com/bangladesh-phone-number-generator"}, {"@type": "ListItem", "position": 41, "name": "sri-lanka phone number generator", "url": "https://www.example.com/sri-lanka-phone-number-generator"}, {"@type": "ListItem", "position": 42, "name": "nepal phone number generator", "url": "https://www.example.com/nepal-phone-number-generator"}, {"@type": "ListItem", "position": 43, "name": "turkey phone number generator", "url": "https://www.example.com/turkey-phone-number-generator"}, {"@type": "ListItem", "position": 44, "name": "saudi-arabia phone number generator", "url": "https://www.example.com/saudi-arabia-phone-number-generator"}, {"@type": "ListItem", "position": 45, "name": "uae phone number generator", "url": "https://www.example.com/uae-phone-number-generator"}, {"@type": "ListItem", "position": 46, "name": "qatar phone number generator", "url": "https://www.example.com/qatar-phone-number-generator"}, {"@type": "ListItem", "position": 47, "name": "kuwait phone number generator", "url": "https://www.example.com/kuwait-phone-number-generator"}, {"@type": "ListItem", "position": 48, "name": "oman phone number generator", "url": "https://www.example.com/oman-phone-number-generator"}, {"@type": "ListItem", "position": 49, "name": "israel phone number generator", "url": "https://www.example.com/israel-phone-number-generator"}, {"@type": "ListItem", "position": 50, "name": "iran phone number generator", "url": "https://www.example.com/iran-phone-number-generator"}, {"@type": "ListItem", "position": 51, "name": "iraq phone number generator", "url": "https://www.example.com/iraq-phone-number-generator"}, {"@type": "ListItem", "position": 52, "name": "south-africa phone number generator", "url": "https://www.example.com/south-africa-phone-number-generator"}, {"@type": "ListItem", "position": 53, "name": "nigeria phone number generator", "url": "https://www.example.com/nigeria-phone-number-generator"}, {"@type": "ListItem", "position": 54, "name": "kenya phone number generator", "url": "https://www.example.com/kenya-phone-number-generator"}, {"@type": "ListItem", "position": 55, "name": "egypt phone number generator", "url": "https://www.example.com/egypt-phone-number-generator"}, {"@type": "ListItem", "position": 56, "name": "morocco phone number generator", "url": "https://www.example.com/morocco-phone-number-generator"}, {"@type": "ListItem", "position": 57, "name": "algeria phone number generator", "url": "https://www.example.com/algeria-phone-number-generator"}, {"@type": "ListItem", "position": 58, "name": "tunisia phone number generator", "url": "https://www.example.com/tunisia-phone-number-generator"}, {"@type": "ListItem", "position": 59, "name": "ethiopia phone number generator", "url": "https://www.example.com/ethiopia-phone-number-generator"}, {"@type": "ListItem", "position": 60, "name": "ghana phone number generator", "url": "https://www.example.com/ghana-phone-number-generator"}, {"@type": "ListItem", "position": 61, "name": "australia phone number generator", "url": "https://www.example.com/australia-phone-number-generator"}, {"@type": "ListItem", "position": 62, "name": "new-zealand phone number generator", "url": "https://www.example.com/new-zealand-phone-number-generator"}]}}</script>
 </head>
 <body>
