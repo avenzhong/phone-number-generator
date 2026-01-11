@@ -1,19 +1,98 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Page not found — phone number generator</title>
-<style>
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; background:#f7f7f8; margin:0; padding:40px 16px; }
-  .wrap { max-width: 760px; margin: 0 auto; text-align:center; }
-  .card { background:#fff; padding:24px; border:1px solid #e5e7eb; border-radius:14px; }
-  a { color:#0e7490; }
-</style>
-<div class="wrap">
-  <div class="card">
-    <h1>404 — page not found</h1>
-    <p>Sorry, we couldn’t find that page.</p>
-    <p><a href="/">Go back to the homepage</a></p>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found — Phone Number Generator</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☎️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f7f8 0%, #e8f4f8 100%);
+      margin: 0;
+      padding: 40px 16px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrap {
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px 32px;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .error-code {
+      font-size: 72px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #111827;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #6b7280;
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #0ea5e9, #0891b2);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="error-code">404</div>
+      <h1>Page Not Found</h1>
+      <p>Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.</p>
+      <a class="btn" href="/">
+        <span>←</span> Back to Homepage
+      </a>
+    </div>
   </div>
-</div>
+</body>
+
 </html>

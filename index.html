@@ -1,86 +1,191 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phone Number Generator | Classic Index</title>
-  <meta name="description" content="Phone number generator by country. Generate valid‑looking formats for the US, UK, China, India, and more. Fast and privacy‑safe." />
-  <link rel="canonical" href="https://www.example.com/" />
+  <title>Phone Number Generator | Generate Valid Phone Number Formats</title>
+  <meta name="description"
+    content="Phone number generator by country. Generate valid‑looking formats for the US, UK, China, India, and more. Fast and privacy‑safe." />
+  <link rel="canonical" href="https://www.phonenumbergenerator.dev/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☎️</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.phonenumbergenerator.dev/" />
+  <meta property="og:title" content="Phone Number Generator | Generate Valid Phone Number Formats" />
+  <meta property="og:description"
+    content="Generate valid-looking phone numbers for countries worldwide. Fast, free, and privacy-safe." />
+  <meta property="og:image" content="https://www.phonenumbergenerator.dev/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.phonenumbergenerator.dev/" />
+  <meta name="twitter:title" content="Phone Number Generator | Generate Valid Phone Number Formats" />
+  <meta name="twitter:description"
+    content="Generate valid-looking phone numbers for countries worldwide. Fast, free, and privacy-safe." />
+
   <link rel="preload" href="assets/styles.css" as="style" />
-  <link rel="stylesheet" href="assets/styles.css" />’
+  <link rel="stylesheet" href="assets/styles.css" />
   <style>
     /* === 入口按钮高亮（不改 HTML，仅样式） === */
 
-/* 卡片容器（如果你的国家列表是 .country-card，可保留；没有也不影响） */
-.country-card {
-  position: relative;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(2,6,23,.06);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.country-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(2,6,23,.10); border-color: rgba(99,102,241,.35); }
-.country-card h2 { margin: 0 0 8px; font: 700 18px/1.3 Inter, system-ui, sans-serif; color: #111827; }
-.country-card p { color: #4b5563; }
+    /* 卡片容器（如果你的国家列表是 .country-card，可保留；没有也不影响） */
+    .country-card {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(2, 6, 23, .06);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
 
-/* 把“卡片内的第一个链接”样式化为主按钮（不依赖你原有 class 名） */
-.country-card a:first-of-type,
-.country-card button:first-of-type {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 14px; border-radius: 12px;
-  background: #4f46e5; color: #fff !important; text-decoration: none;
-  font: 600 14px/1 Inter, system-ui, sans-serif;
-  box-shadow: 0 8px 18px rgba(79,70,229,.22);
-  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
-  border: 0;
-}
-.country-card a:first-of-type:hover,
-.country-card button:first-of-type:hover { background: #4338ca; transform: translateY(-1px); }
-.country-card a:first-of-type:focus-visible,
-.country-card button:first-of-type:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.22); }
+    .country-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(2, 6, 23, .10);
+      border-color: rgba(99, 102, 241, .35);
+    }
 
-/* 如果你的入口本来就有 class（btn/button/action），也统一美化 */
-a.btn, a.button, a.action, button.btn, button.button, button.action {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 14px; border-radius: 12px;
-  background: #4f46e5; color: #fff !important; text-decoration: none;
-  font: 600 14px/1 Inter, system-ui, sans-serif;
-  box-shadow: 0 8px 18px rgba(79,70,229,.22);
-  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
-  border: 0;
-}
-a.btn:hover, a.button:hover, a.action:hover,
-button.btn:hover, button.button:hover, button.action:hover { background: #4338ca; transform: translateY(-1px); }
-a.btn:focus-visible, a.button:focus-visible, a.action:focus-visible,
-button.btn:focus-visible, button.button:focus-visible, button.action:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.22); }
+    .country-card h2 {
+      margin: 0 0 8px;
+      font: 700 18px/1.3 Inter, system-ui, sans-serif;
+      color: #111827;
+    }
 
-/* 把“非主按钮的其他链接”做成次级样式，避免看起来像纯文本不易点 */
-.country-card a:not(:first-of-type) {
-  display: inline-flex; align-items: center;
-  padding: 8px 10px; border-radius: 10px;
-  color: #4f46e5; background: #eef2ff; text-decoration: none;
-  font: 600 13px/1 Inter, system-ui, sans-serif;
-  transition: background .15s ease, color .15s ease;
-}
-.country-card a:not(:first-of-type):hover { background: #e0e7ff; color: #4338ca; }
+    .country-card p {
+      color: #4b5563;
+    }
 
-/* 保底：明确让所有可点击项的鼠标指针为手型 */
-.country-card a, .country-card button { cursor: pointer; }
+    /* 把“卡片内的第一个链接”样式化为主按钮（不依赖你原有 class 名） */
+    .country-card a:first-of-type,
+    .country-card button:first-of-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #4f46e5;
+      color: #fff !important;
+      text-decoration: none;
+      font: 600 14px/1 Inter, system-ui, sans-serif;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, .22);
+      transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+      border: 0;
+    }
 
-/* 搜索区与标题的可读性（不改结构） */
-.hero h1 { font: 800 clamp(28px,3.2vw,40px)/1.15 Inter, system-ui, sans-serif; color: #111827; margin: 0 0 8px; }
-.hero .lead { color: #4b5563; }
+    .country-card a:first-of-type:hover,
+    .country-card button:first-of-type:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+    }
 
-/* 移动端间距友好 */
-@media (max-width: 640px) {
-  .country-card { padding: 16px; }
-  .country-card a:first-of-type { width: 100%; justify-content: center; }
-}
+    .country-card a:first-of-type:focus-visible,
+    .country-card button:first-of-type:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, .22);
+    }
+
+    /* 如果你的入口本来就有 class（btn/button/action），也统一美化 */
+    a.btn,
+    a.button,
+    a.action,
+    button.btn,
+    button.button,
+    button.action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #4f46e5;
+      color: #fff !important;
+      text-decoration: none;
+      font: 600 14px/1 Inter, system-ui, sans-serif;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, .22);
+      transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+      border: 0;
+    }
+
+    a.btn:hover,
+    a.button:hover,
+    a.action:hover,
+    button.btn:hover,
+    button.button:hover,
+    button.action:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    a.btn:focus-visible,
+    a.button:focus-visible,
+    a.action:focus-visible,
+    button.btn:focus-visible,
+    button.button:focus-visible,
+    button.action:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, .22);
+    }
+
+    /* 把“非主按钮的其他链接”做成次级样式，避免看起来像纯文本不易点 */
+    .country-card a:not(:first-of-type) {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: #4f46e5;
+      background: #eef2ff;
+      text-decoration: none;
+      font: 600 13px/1 Inter, system-ui, sans-serif;
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .country-card a:not(:first-of-type):hover {
+      background: #e0e7ff;
+      color: #4338ca;
+    }
+
+    /* 保底：明确让所有可点击项的鼠标指针为手型 */
+    .country-card a,
+    .country-card button {
+      cursor: pointer;
+    }
+
+    /* 搜索区与标题的可读性（不改结构） */
+    .hero h1 {
+      font: 800 clamp(28px, 3.2vw, 40px)/1.15 Inter, system-ui, sans-serif;
+      color: #111827;
+      margin: 0 0 8px;
+    }
+
+    .hero .lead {
+      color: #4b5563;
+    }
+
+    /* 移动端间距友好 */
+    @media (max-width: 640px) {
+      .country-card {
+        padding: 16px;
+      }
+
+      .country-card a:first-of-type {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Phone Number Generator", "url": "https://www.example.com/", "description": "Generate valid-looking phone numbers for countries worldwide.", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "us phone number generator", "url": "https://www.example.com/us-phone-number-generator"}, {"@type": "ListItem", "position": 2, "name": "canada phone number generator", "url": "https://www.example.com/canada-phone-number-generator"}, {"@type": "ListItem", "position": 3, "name": "mexico phone number generator", "url": "https://www.example.com/mexico-phone-number-generator"}, {"@type": "ListItem", "position": 4, "name": "brazil phone number generator", "url": "https://www.example.com/brazil-phone-number-generator"}, {"@type": "ListItem", "position": 5, "name": "argentina phone number generator", "url": "https://www.example.com/argentina-phone-number-generator"}, {"@type": "ListItem", "position": 6, "name": "chile phone number generator", "url": "https://www.example.com/chile-phone-number-generator"}, {"@type": "ListItem", "position": 7, "name": "colombia phone number generator", "url": "https://www.example.com/colombia-phone-number-generator"}, {"@type": "ListItem", "position": 8, "name": "peru phone number generator", "url": "https://www.example.com/peru-phone-number-generator"}, {"@type": "ListItem", "position": 9, "name": "uk phone number generator", "url": "https://www.example.com/uk-phone-number-generator"}, {"@type": "ListItem", "position": 10, "name": "germany phone number generator", "url": "https://www.example.com/germany-phone-number-generator"}, {"@type": "ListItem", "position": 11, "name": "france phone number generator", "url": "https://www.example.com/france-phone-number-generator"}, {"@type": "ListItem", "position": 12, "name": "spain phone number generator", "url": "https://www.example.com/spain-phone-number-generator"}, {"@type": "ListItem", "position": 13, "name": "italy phone number generator", "url": "https://www.example.com/italy-phone-number-generator"}, {"@type": "ListItem", "position": 14, "name": "portugal phone number generator", "url": "https://www.example.com/portugal-phone-number-generator"}, {"@type": "ListItem", "position": 15, "name": "greece phone number generator", "url": "https://www.example.com/greece-phone-number-generator"}, {"@type": "ListItem", "position": 16, "name": "ireland phone number generator", "url": "https://www.example.com/ireland-phone-number-generator"}, {"@type": "ListItem", "position": 17, "name": "netherlands phone number generator", "url": "https://www.example.com/netherlands-phone-number-generator"}, {"@type": "ListItem", "position": 18, "name": "belgium phone number generator", "url": "https://www.example.com/belgium-phone-number-generator"}, {"@type": "ListItem", "position": 19, "name": "sweden phone number generator", "url": "https://www.example.com/sweden-phone-number-generator"}, {"@type": "ListItem", "position": 20, "name": "norway phone number generator", "url": "https://www.example.com/norway-phone-number-generator"}, {"@type": "ListItem", "position": 21, "name": "denmark phone number generator", "url": "https://www.example.com/denmark-phone-number-generator"}, {"@type": "ListItem", "position": 22, "name": "finland phone number generator", "url": "https://www.example.com/finland-phone-number-generator"}, {"@type": "ListItem", "position": 23, "name": "switzerland phone number generator", "url": "https://www.example.com/switzerland-phone-number-generator"}, {"@type": "ListItem", "position": 24, "name": "austria phone number generator", "url": "https://www.example.com/austria-phone-number-generator"}, {"@type": "ListItem", "position": 25, "name": "poland phone number generator", "url": "https://www.example.com/poland-phone-number-generator"}, {"@type": "ListItem", "position": 26, "name": "ukraine phone number generator", "url": "https://www.example.com/ukraine-phone-number-generator"}, {"@type": "ListItem", "position": 27, "name": "china phone number generator", "url": "https://www.example.com/china-phone-number-generator"}, {"@type": "ListItem", "position": 28, "name": "india phone number generator", "url": "https://www.example.com/india-phone-number-generator"}, {"@type": "ListItem", "position": 29, "name": "japan phone number generator", "url": "https://www.example.com/japan-phone-number-generator"}, {"@type": "ListItem", "position": 30, "name": "south-korea phone number generator", "url": "https://www.example.com/south-korea-phone-number-generator"}, {"@type": "ListItem", "position": 31, "name": "hong-kong phone number generator", "url": "https://www.example.com/hong-kong-phone-number-generator"}, {"@type": "ListItem", "position": 32, "name": "taiwan phone number generator", "url": "https://www.example.com/taiwan-phone-number-generator"}, {"@type": "ListItem", "position": 33, "name": "singapore phone number generator", "url": "https://www.example.com/singapore-phone-number-generator"}, {"@type": "ListItem", "position": 34, "name": "malaysia phone number generator", "url": "https://www.example.com/malaysia-phone-number-generator"}, {"@type": "ListItem", "position": 35, "name": "thailand phone number generator", "url": "https://www.example.com/thailand-phone-number-generator"}, {"@type": "ListItem", "position": 36, "name": "vietnam phone number generator", "url": "https://www.example.com/vietnam-phone-number-generator"}, {"@type": "ListItem", "position": 37, "name": "philippines phone number generator", "url": "https://www.example.com/philippines-phone-number-generator"}, {"@type": "ListItem", "position": 38, "name": "indonesia phone number generator", "url": "https://www.example.com/indonesia-phone-number-generator"}, {"@type": "ListItem", "position": 39, "name": "pakistan phone number generator", "url": "https://www.example.com/pakistan-phone-number-generator"}, {"@type": "ListItem", "position": 40, "name": "bangladesh phone number generator", "url": "https://www.example.com/bangladesh-phone-number-generator"}, {"@type": "ListItem", "position": 41, "name": "sri-lanka phone number generator", "url": "https://www.example.com/sri-lanka-phone-number-generator"}, {"@type": "ListItem", "position": 42, "name": "nepal phone number generator", "url": "https://www.example.com/nepal-phone-number-generator"}, {"@type": "ListItem", "position": 43, "name": "turkey phone number generator", "url": "https://www.example.com/turkey-phone-number-generator"}, {"@type": "ListItem", "position": 44, "name": "saudi-arabia phone number generator", "url": "https://www.example.com/saudi-arabia-phone-number-generator"}, {"@type": "ListItem", "position": 45, "name": "uae phone number generator", "url": "https://www.example.com/uae-phone-number-generator"}, {"@type": "ListItem", "position": 46, "name": "qatar phone number generator", "url": "https://www.example.com/qatar-phone-number-generator"}, {"@type": "ListItem", "position": 47, "name": "kuwait phone number generator", "url": "https://www.example.com/kuwait-phone-number-generator"}, {"@type": "ListItem", "position": 48, "name": "oman phone number generator", "url": "https://www.example.com/oman-phone-number-generator"}, {"@type": "ListItem", "position": 49, "name": "israel phone number generator", "url": "https://www.example.com/israel-phone-number-generator"}, {"@type": "ListItem", "position": 50, "name": "iran phone number generator", "url": "https://www.example.com/iran-phone-number-generator"}, {"@type": "ListItem", "position": 51, "name": "iraq phone number generator", "url": "https://www.example.com/iraq-phone-number-generator"}, {"@type": "ListItem", "position": 52, "name": "south-africa phone number generator", "url": "https://www.example.com/south-africa-phone-number-generator"}, {"@type": "ListItem", "position": 53, "name": "nigeria phone number generator", "url": "https://www.example.com/nigeria-phone-number-generator"}, {"@type": "ListItem", "position": 54, "name": "kenya phone number generator", "url": "https://www.example.com/kenya-phone-number-generator"}, {"@type": "ListItem", "position": 55, "name": "egypt phone number generator", "url": "https://www.example.com/egypt-phone-number-generator"}, {"@type": "ListItem", "position": 56, "name": "morocco phone number generator", "url": "https://www.example.com/morocco-phone-number-generator"}, {"@type": "ListItem", "position": 57, "name": "algeria phone number generator", "url": "https://www.example.com/algeria-phone-number-generator"}, {"@type": "ListItem", "position": 58, "name": "tunisia phone number generator", "url": "https://www.example.com/tunisia-phone-number-generator"}, {"@type": "ListItem", "position": 59, "name": "ethiopia phone number generator", "url": "https://www.example.com/ethiopia-phone-number-generator"}, {"@type": "ListItem", "position": 60, "name": "ghana phone number generator", "url": "https://www.example.com/ghana-phone-number-generator"}, {"@type": "ListItem", "position": 61, "name": "australia phone number generator", "url": "https://www.example.com/australia-phone-number-generator"}, {"@type": "ListItem", "position": 62, "name": "new-zealand phone number generator", "url": "https://www.example.com/new-zealand-phone-number-generator"}]}}</script>
+  <script
+    type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Phone Number Generator", "url": "https://www.example.com/", "description": "Generate valid-looking phone numbers for countries worldwide.", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "us phone number generator", "url": "https://www.example.com/us-phone-number-generator"}, {"@type": "ListItem", "position": 2, "name": "canada phone number generator", "url": "https://www.example.com/canada-phone-number-generator"}, {"@type": "ListItem", "position": 3, "name": "mexico phone number generator", "url": "https://www.example.com/mexico-phone-number-generator"}, {"@type": "ListItem", "position": 4, "name": "brazil phone number generator", "url": "https://www.example.com/brazil-phone-number-generator"}, {"@type": "ListItem", "position": 5, "name": "argentina phone number generator", "url": "https://www.example.com/argentina-phone-number-generator"}, {"@type": "ListItem", "position": 6, "name": "chile phone number generator", "url": "https://www.example.com/chile-phone-number-generator"}, {"@type": "ListItem", "position": 7, "name": "colombia phone number generator", "url": "https://www.example.com/colombia-phone-number-generator"}, {"@type": "ListItem", "position": 8, "name": "peru phone number generator", "url": "https://www.example.com/peru-phone-number-generator"}, {"@type": "ListItem", "position": 9, "name": "uk phone number generator", "url": "https://www.example.com/uk-phone-number-generator"}, {"@type": "ListItem", "position": 10, "name": "germany phone number generator", "url": "https://www.example.com/germany-phone-number-generator"}, {"@type": "ListItem", "position": 11, "name": "france phone number generator", "url": "https://www.example.com/france-phone-number-generator"}, {"@type": "ListItem", "position": 12, "name": "spain phone number generator", "url": "https://www.example.com/spain-phone-number-generator"}, {"@type": "ListItem", "position": 13, "name": "italy phone number generator", "url": "https://www.example.com/italy-phone-number-generator"}, {"@type": "ListItem", "position": 14, "name": "portugal phone number generator", "url": "https://www.example.com/portugal-phone-number-generator"}, {"@type": "ListItem", "position": 15, "name": "greece phone number generator", "url": "https://www.example.com/greece-phone-number-generator"}, {"@type": "ListItem", "position": 16, "name": "ireland phone number generator", "url": "https://www.example.com/ireland-phone-number-generator"}, {"@type": "ListItem", "position": 17, "name": "netherlands phone number generator", "url": "https://www.example.com/netherlands-phone-number-generator"}, {"@type": "ListItem", "position": 18, "name": "belgium phone number generator", "url": "https://www.example.com/belgium-phone-number-generator"}, {"@type": "ListItem", "position": 19, "name": "sweden phone number generator", "url": "https://www.example.com/sweden-phone-number-generator"}, {"@type": "ListItem", "position": 20, "name": "norway phone number generator", "url": "https://www.example.com/norway-phone-number-generator"}, {"@type": "ListItem", "position": 21, "name": "denmark phone number generator", "url": "https://www.example.com/denmark-phone-number-generator"}, {"@type": "ListItem", "position": 22, "name": "finland phone number generator", "url": "https://www.example.com/finland-phone-number-generator"}, {"@type": "ListItem", "position": 23, "name": "switzerland phone number generator", "url": "https://www.example.com/switzerland-phone-number-generator"}, {"@type": "ListItem", "position": 24, "name": "austria phone number generator", "url": "https://www.example.com/austria-phone-number-generator"}, {"@type": "ListItem", "position": 25, "name": "poland phone number generator", "url": "https://www.example.com/poland-phone-number-generator"}, {"@type": "ListItem", "position": 26, "name": "ukraine phone number generator", "url": "https://www.example.com/ukraine-phone-number-generator"}, {"@type": "ListItem", "position": 27, "name": "china phone number generator", "url": "https://www.example.com/china-phone-number-generator"}, {"@type": "ListItem", "position": 28, "name": "india phone number generator", "url": "https://www.example.com/india-phone-number-generator"}, {"@type": "ListItem", "position": 29, "name": "japan phone number generator", "url": "https://www.example.com/japan-phone-number-generator"}, {"@type": "ListItem", "position": 30, "name": "south-korea phone number generator", "url": "https://www.example.com/south-korea-phone-number-generator"}, {"@type": "ListItem", "position": 31, "name": "hong-kong phone number generator", "url": "https://www.example.com/hong-kong-phone-number-generator"}, {"@type": "ListItem", "position": 32, "name": "taiwan phone number generator", "url": "https://www.example.com/taiwan-phone-number-generator"}, {"@type": "ListItem", "position": 33, "name": "singapore phone number generator", "url": "https://www.example.com/singapore-phone-number-generator"}, {"@type": "ListItem", "position": 34, "name": "malaysia phone number generator", "url": "https://www.example.com/malaysia-phone-number-generator"}, {"@type": "ListItem", "position": 35, "name": "thailand phone number generator", "url": "https://www.example.com/thailand-phone-number-generator"}, {"@type": "ListItem", "position": 36, "name": "vietnam phone number generator", "url": "https://www.example.com/vietnam-phone-number-generator"}, {"@type": "ListItem", "position": 37, "name": "philippines phone number generator", "url": "https://www.example.com/philippines-phone-number-generator"}, {"@type": "ListItem", "position": 38, "name": "indonesia phone number generator", "url": "https://www.example.com/indonesia-phone-number-generator"}, {"@type": "ListItem", "position": 39, "name": "pakistan phone number generator", "url": "https://www.example.com/pakistan-phone-number-generator"}, {"@type": "ListItem", "position": 40, "name": "bangladesh phone number generator", "url": "https://www.example.com/bangladesh-phone-number-generator"}, {"@type": "ListItem", "position": 41, "name": "sri-lanka phone number generator", "url": "https://www.example.com/sri-lanka-phone-number-generator"}, {"@type": "ListItem", "position": 42, "name": "nepal phone number generator", "url": "https://www.example.com/nepal-phone-number-generator"}, {"@type": "ListItem", "position": 43, "name": "turkey phone number generator", "url": "https://www.example.com/turkey-phone-number-generator"}, {"@type": "ListItem", "position": 44, "name": "saudi-arabia phone number generator", "url": "https://www.example.com/saudi-arabia-phone-number-generator"}, {"@type": "ListItem", "position": 45, "name": "uae phone number generator", "url": "https://www.example.com/uae-phone-number-generator"}, {"@type": "ListItem", "position": 46, "name": "qatar phone number generator", "url": "https://www.example.com/qatar-phone-number-generator"}, {"@type": "ListItem", "position": 47, "name": "kuwait phone number generator", "url": "https://www.example.com/kuwait-phone-number-generator"}, {"@type": "ListItem", "position": 48, "name": "oman phone number generator", "url": "https://www.example.com/oman-phone-number-generator"}, {"@type": "ListItem", "position": 49, "name": "israel phone number generator", "url": "https://www.example.com/israel-phone-number-generator"}, {"@type": "ListItem", "position": 50, "name": "iran phone number generator", "url": "https://www.example.com/iran-phone-number-generator"}, {"@type": "ListItem", "position": 51, "name": "iraq phone number generator", "url": "https://www.example.com/iraq-phone-number-generator"}, {"@type": "ListItem", "position": 52, "name": "south-africa phone number generator", "url": "https://www.example.com/south-africa-phone-number-generator"}, {"@type": "ListItem", "position": 53, "name": "nigeria phone number generator", "url": "https://www.example.com/nigeria-phone-number-generator"}, {"@type": "ListItem", "position": 54, "name": "kenya phone number generator", "url": "https://www.example.com/kenya-phone-number-generator"}, {"@type": "ListItem", "position": 55, "name": "egypt phone number generator", "url": "https://www.example.com/egypt-phone-number-generator"}, {"@type": "ListItem", "position": 56, "name": "morocco phone number generator", "url": "https://www.example.com/morocco-phone-number-generator"}, {"@type": "ListItem", "position": 57, "name": "algeria phone number generator", "url": "https://www.example.com/algeria-phone-number-generator"}, {"@type": "ListItem", "position": 58, "name": "tunisia phone number generator", "url": "https://www.example.com/tunisia-phone-number-generator"}, {"@type": "ListItem", "position": 59, "name": "ethiopia phone number generator", "url": "https://www.example.com/ethiopia-phone-number-generator"}, {"@type": "ListItem", "position": 60, "name": "ghana phone number generator", "url": "https://www.example.com/ghana-phone-number-generator"}, {"@type": "ListItem", "position": 61, "name": "australia phone number generator", "url": "https://www.example.com/australia-phone-number-generator"}, {"@type": "ListItem", "position": 62, "name": "new-zealand phone number generator", "url": "https://www.example.com/new-zealand-phone-number-generator"}]}}</script>
 </head>
+
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
@@ -99,327 +204,394 @@ button.btn:focus-visible, button.button:focus-visible, button.action:focus-visib
   <section class="hero">
     <div class="container">
       <h1>phone number generator</h1>
-      <p class="lead">Generate valid‑looking formats (not real/assigned numbers) for countries worldwide. Choose a country below to open its dedicated generator page.</p>
-      <div class="note" role="note">For testing and education only. We do <strong>not</strong> provide real, active numbers or verification codes.</div>
+      <p class="lead">Generate valid‑looking formats (not real/assigned numbers) for countries worldwide. Choose a
+        country below to open its dedicated generator page.</p>
+      <div class="note" role="note">For testing and education only. We do <strong>not</strong> provide real, active
+        numbers or verification codes.</div>
       <div class="search-wrap">
         <label for="search" class="sr-only">Search countries</label>
-        <input id="search" class="search" type="search" placeholder="Search countries… (e.g., us, china, germany)" autocomplete="off" />
+        <input id="search" class="search" type="search" placeholder="Search countries… (e.g., us, china, germany)"
+          autocomplete="off" />
       </div>
     </div>
   </section>
 
   <main id="main" class="container">
     <div class="country-grid" id="country-grid">
-<section class="country-card" id="us" aria-labelledby="us-h2">
-  <h2 id="us-h2">us phone number generator</h2>
-  <p class="desc">Generate US‑style numbers. Format examples: +1 XXX‑XXX‑XXXX, (XXX) XXX‑XXXX.</p>
-  <a class="btn" href="us-phone-number-generator.html" aria-label="Open us phone number generator">us phone number generator</a>
-</section>
-<section class="country-card" id="canada" aria-labelledby="canada-h2">
-  <h2 id="canada-h2">canada phone number generator</h2>
-  <p class="desc">Canadian formats mirror NANP: +1 XXX‑XXX‑XXXX with province‑appropriate area codes.</p>
-  <a class="btn" href="canada-phone-number-generator.html" aria-label="Open canada phone number generator">canada phone number generator</a>
-</section>
-<section class="country-card" id="mexico" aria-labelledby="mexico-h2">
-  <h2 id="mexico-h2">mexico phone number generator</h2>
-  <p class="desc">Mexico formats: +52 XX XXXX XXXX (landline) or +52 1 XXX XXX XXXX (mobile).</p>
-  <a class="btn" href="mexico-phone-number-generator.html" aria-label="Open mexico phone number generator">mexico phone number generator</a>
-</section>
-<section class="country-card" id="brazil" aria-labelledby="brazil-h2">
-  <h2 id="brazil-h2">brazil phone number generator</h2>
-  <p class="desc">Brazil formats: +55 (AA) NNNNN‑NNNN (mobile) with valid DDD area codes.</p>
-  <a class="btn" href="brazil-phone-number-generator.html" aria-label="Open brazil phone number generator">brazil phone number generator</a>
-</section>
-<section class="country-card" id="argentina" aria-labelledby="argentina-h2">
-  <h2 id="argentina-h2">argentina phone number generator</h2>
-  <p class="desc">Argentina examples: +54 9 AA NNNN‑NNNN (mobile) or +54 AA NNNN‑NNNN (landline).</p>
-  <a class="btn" href="argentina-phone-number-generator.html" aria-label="Open argentina phone number generator">argentina phone number generator</a>
-</section>
-<section class="country-card" id="chile" aria-labelledby="chile-h2">
-  <h2 id="chile-h2">chile phone number generator</h2>
-  <p class="desc">Chile uses 8‑digit local parts: +56 9 NNNN NNNN (mobile), +56 2 NNNN NNNN (Santiago landline).</p>
-  <a class="btn" href="chile-phone-number-generator.html" aria-label="Open chile phone number generator">chile phone number generator</a>
-</section>
-<section class="country-card" id="colombia" aria-labelledby="colombia-h2">
-  <h2 id="colombia-h2">colombia phone number generator</h2>
-  <p class="desc">Colombia: +57 3XX XXXX XXXX (mobile), +57 1 XXX XXXX (Bogotá landline).</p>
-  <a class="btn" href="colombia-phone-number-generator.html" aria-label="Open colombia phone number generator">colombia phone number generator</a>
-</section>
-<section class="country-card" id="peru" aria-labelledby="peru-h2">
-  <h2 id="peru-h2">peru phone number generator</h2>
-  <p class="desc">Peru: +51 9XX XXX XXX (mobile) or +51 1 XXX XXXX (Lima landline).</p>
-  <a class="btn" href="peru-phone-number-generator.html" aria-label="Open peru phone number generator">peru phone number generator</a>
-</section>
-<section class="country-card" id="uk" aria-labelledby="uk-h2">
-  <h2 id="uk-h2">uk phone number generator</h2>
-  <p class="desc">UK formats: +44 7XXXX XXXXXX (mobile), +44 20 XXXX XXXX (London landline).</p>
-  <a class="btn" href="uk-phone-number-generator.html" aria-label="Open uk phone number generator">uk phone number generator</a>
-</section>
-<section class="country-card" id="germany" aria-labelledby="germany-h2">
-  <h2 id="germany-h2">germany phone number generator</h2>
-  <p class="desc">Germany: +49 15X XXXX XXXX (mobile) or +49 30 XXXX XXXX (Berlin landline).</p>
-  <a class="btn" href="germany-phone-number-generator.html" aria-label="Open germany phone number generator">germany phone number generator</a>
-</section>
-<section class="country-card" id="france" aria-labelledby="france-h2">
-  <h2 id="france-h2">france phone number generator</h2>
-  <p class="desc">France: +33 6 XX XX XX XX (mobile) or +33 1 XX XX XX XX (Île‑de‑France).</p>
-  <a class="btn" href="france-phone-number-generator.html" aria-label="Open france phone number generator">france phone number generator</a>
-</section>
-<section class="country-card" id="spain" aria-labelledby="spain-h2">
-  <h2 id="spain-h2">spain phone number generator</h2>
-  <p class="desc">Spain: +34 6XX XXX XXX / +34 7XX XXX XXX (mobile) or +34 9XX XXX XXX (landline).</p>
-  <a class="btn" href="spain-phone-number-generator.html" aria-label="Open spain phone number generator">spain phone number generator</a>
-</section>
-<section class="country-card" id="italy" aria-labelledby="italy-h2">
-  <h2 id="italy-h2">italy phone number generator</h2>
-  <p class="desc">Italy: +39 3XX XXX XXXX (mobile) or +39 0X XXXX XXXX (landline).</p>
-  <a class="btn" href="italy-phone-number-generator.html" aria-label="Open italy phone number generator">italy phone number generator</a>
-</section>
-<section class="country-card" id="portugal" aria-labelledby="portugal-h2">
-  <h2 id="portugal-h2">portugal phone number generator</h2>
-  <p class="desc">Portugal: +351 9X XXX XXXX (mobile) or +351 2X XXX XXXX (landline).</p>
-  <a class="btn" href="portugal-phone-number-generator.html" aria-label="Open portugal phone number generator">portugal phone number generator</a>
-</section>
-<section class="country-card" id="greece" aria-labelledby="greece-h2">
-  <h2 id="greece-h2">greece phone number generator</h2>
-  <p class="desc">Greece: +30 69X XXX XXXX (mobile) or +30 2X XXXX XXXX (landline).</p>
-  <a class="btn" href="greece-phone-number-generator.html" aria-label="Open greece phone number generator">greece phone number generator</a>
-</section>
-<section class="country-card" id="ireland" aria-labelledby="ireland-h2">
-  <h2 id="ireland-h2">ireland phone number generator</h2>
-  <p class="desc">Ireland: +353 8X XXX XXXX (mobile), +353 1 XXX XXXX (Dublin landline).</p>
-  <a class="btn" href="ireland-phone-number-generator.html" aria-label="Open ireland phone number generator">ireland phone number generator</a>
-</section>
-<section class="country-card" id="netherlands" aria-labelledby="netherlands-h2">
-  <h2 id="netherlands-h2">netherlands phone number generator</h2>
-  <p class="desc">Netherlands: +31 6 XXXXXXXX (mobile), +31 10 XXXX XXXX (Rotterdam landline).</p>
-  <a class="btn" href="netherlands-phone-number-generator.html" aria-label="Open netherlands phone number generator">netherlands phone number generator</a>
-</section>
-<section class="country-card" id="belgium" aria-labelledby="belgium-h2">
-  <h2 id="belgium-h2">belgium phone number generator</h2>
-  <p class="desc">Belgium: +32 4XX XX XX XX (mobile) or +32 2 XXX XX XX (Brussels landline).</p>
-  <a class="btn" href="belgium-phone-number-generator.html" aria-label="Open belgium phone number generator">belgium phone number generator</a>
-</section>
-<section class="country-card" id="sweden" aria-labelledby="sweden-h2">
-  <h2 id="sweden-h2">sweden phone number generator</h2>
-  <p class="desc">Sweden: +46 7X XXX XX XX (mobile) or +46 8 XXX XX XX (Stockholm landline).</p>
-  <a class="btn" href="sweden-phone-number-generator.html" aria-label="Open sweden phone number generator">sweden phone number generator</a>
-</section>
-<section class="country-card" id="norway" aria-labelledby="norway-h2">
-  <h2 id="norway-h2">norway phone number generator</h2>
-  <p class="desc">Norway: +47 4X XX XX XX or +47 9X XX XX XX (mobile), 8‑digit landlines.</p>
-  <a class="btn" href="norway-phone-number-generator.html" aria-label="Open norway phone number generator">norway phone number generator</a>
-</section>
-<section class="country-card" id="denmark" aria-labelledby="denmark-h2">
-  <h2 id="denmark-h2">denmark phone number generator</h2>
-  <p class="desc">Denmark: +45 XX XX XX XX (8 digits, no area codes).</p>
-  <a class="btn" href="denmark-phone-number-generator.html" aria-label="Open denmark phone number generator">denmark phone number generator</a>
-</section>
-<section class="country-card" id="finland" aria-labelledby="finland-h2">
-  <h2 id="finland-h2">finland phone number generator</h2>
-  <p class="desc">Finland: +358 4X XXX XXXX (mobile) or +358 9 XXX XXXX (Helsinki).</p>
-  <a class="btn" href="finland-phone-number-generator.html" aria-label="Open finland phone number generator">finland phone number generator</a>
-</section>
-<section class="country-card" id="switzerland" aria-labelledby="switzerland-h2">
-  <h2 id="switzerland-h2">switzerland phone number generator</h2>
-  <p class="desc">Switzerland: +41 7X XXX XX XX (mobile), +41 22 XXX XX XX (Geneva).</p>
-  <a class="btn" href="switzerland-phone-number-generator.html" aria-label="Open switzerland phone number generator">switzerland phone number generator</a>
-</section>
-<section class="country-card" id="austria" aria-labelledby="austria-h2">
-  <h2 id="austria-h2">austria phone number generator</h2>
-  <p class="desc">Austria: +43 6XX XXX XXXX (mobile) or +43 1 XXX XXXX (Vienna).</p>
-  <a class="btn" href="austria-phone-number-generator.html" aria-label="Open austria phone number generator">austria phone number generator</a>
-</section>
-<section class="country-card" id="poland" aria-labelledby="poland-h2">
-  <h2 id="poland-h2">poland phone number generator</h2>
-  <p class="desc">Poland: +48 5XX/6XX XXX XXX (mobile), +48 22 XXX XX XX (Warsaw).</p>
-  <a class="btn" href="poland-phone-number-generator.html" aria-label="Open poland phone number generator">poland phone number generator</a>
-</section>
-<section class="country-card" id="ukraine" aria-labelledby="ukraine-h2">
-  <h2 id="ukraine-h2">ukraine phone number generator</h2>
-  <p class="desc">Ukraine: +380 67 XXX XXXX (mobile) or +380 44 XXX XX XX (Kyiv landline).</p>
-  <a class="btn" href="ukraine-phone-number-generator.html" aria-label="Open ukraine phone number generator">ukraine phone number generator</a>
-</section>
-<section class="country-card" id="china" aria-labelledby="china-h2">
-  <h2 id="china-h2">china phone number generator</h2>
-  <p class="desc">China mobile examples: +86 1XX XXXX XXXX (11 digits). Landline examples: +86 10 XXXX XXXX (Beijing).</p>
-  <a class="btn" href="china-phone-number-generator.html" aria-label="Open china phone number generator">china phone number generator</a>
-</section>
-<section class="country-card" id="india" aria-labelledby="india-h2">
-  <h2 id="india-h2">india phone number generator</h2>
-  <p class="desc">India: +91 XXXXX XXXXX (mobile), +91 11 XXXX XXXX (Delhi landline).</p>
-  <a class="btn" href="india-phone-number-generator.html" aria-label="Open india phone number generator">india phone number generator</a>
-</section>
-<section class="country-card" id="japan" aria-labelledby="japan-h2">
-  <h2 id="japan-h2">japan phone number generator</h2>
-  <p class="desc">Japan: +81 090/080‑XXXX‑XXXX (mobile) or +81 3‑XXXX‑XXXX (Tokyo).</p>
-  <a class="btn" href="japan-phone-number-generator.html" aria-label="Open japan phone number generator">japan phone number generator</a>
-</section>
-<section class="country-card" id="south-korea" aria-labelledby="south-korea-h2">
-  <h2 id="south-korea-h2">south-korea phone number generator</h2>
-  <p class="desc">South Korea: +82 010‑XXXX‑XXXX (mobile) or +82 2‑XXXX‑XXXX (Seoul landline).</p>
-  <a class="btn" href="south-korea-phone-number-generator.html" aria-label="Open south-korea phone number generator">south-korea phone number generator</a>
-</section>
-<section class="country-card" id="hong-kong" aria-labelledby="hong-kong-h2">
-  <h2 id="hong-kong-h2">hong-kong phone number generator</h2>
-  <p class="desc">Hong Kong: +852 XXXX XXXX (8 digits; mobile typically starts with 5/6/9).</p>
-  <a class="btn" href="hong-kong-phone-number-generator.html" aria-label="Open hong-kong phone number generator">hong-kong phone number generator</a>
-</section>
-<section class="country-card" id="taiwan" aria-labelledby="taiwan-h2">
-  <h2 id="taiwan-h2">taiwan phone number generator</h2>
-  <p class="desc">Taiwan: +886 9XX XXX XXX (mobile) or +886 2 XXXX XXXX (Taipei).</p>
-  <a class="btn" href="taiwan-phone-number-generator.html" aria-label="Open taiwan phone number generator">taiwan phone number generator</a>
-</section>
-<section class="country-card" id="singapore" aria-labelledby="singapore-h2">
-  <h2 id="singapore-h2">singapore phone number generator</h2>
-  <p class="desc">Singapore: +65 XXXX XXXX (8 digits; mobile often starts 8/9).</p>
-  <a class="btn" href="singapore-phone-number-generator.html" aria-label="Open singapore phone number generator">singapore phone number generator</a>
-</section>
-<section class="country-card" id="malaysia" aria-labelledby="malaysia-h2">
-  <h2 id="malaysia-h2">malaysia phone number generator</h2>
-  <p class="desc">Malaysia: +60 1X‑XXX XXXX (mobile) or +60 3‑XXXX XXXX (Kuala Lumpur).</p>
-  <a class="btn" href="malaysia-phone-number-generator.html" aria-label="Open malaysia phone number generator">malaysia phone number generator</a>
-</section>
-<section class="country-card" id="thailand" aria-labelledby="thailand-h2">
-  <h2 id="thailand-h2">thailand phone number generator</h2>
-  <p class="desc">Thailand: +66 8X‑XXX‑XXXX / +66 9X‑XXX‑XXXX (mobile), +66 2‑XXXX‑XXXX (Bangkok).</p>
-  <a class="btn" href="thailand-phone-number-generator.html" aria-label="Open thailand phone number generator">thailand phone number generator</a>
-</section>
-<section class="country-card" id="vietnam" aria-labelledby="vietnam-h2">
-  <h2 id="vietnam-h2">vietnam phone number generator</h2>
-  <p class="desc">Vietnam: +84 9X or 3X XXX XXXX (mobile) or +84 24 XXXX XXXX (Hanoi).</p>
-  <a class="btn" href="vietnam-phone-number-generator.html" aria-label="Open vietnam phone number generator">vietnam phone number generator</a>
-</section>
-<section class="country-card" id="philippines" aria-labelledby="philippines-h2">
-  <h2 id="philippines-h2">philippines phone number generator</h2>
-  <p class="desc">Philippines: +63 9XX XXX XXXX (mobile) or +63 2 XXXX XXXX (Metro Manila landline).</p>
-  <a class="btn" href="philippines-phone-number-generator.html" aria-label="Open philippines phone number generator">philippines phone number generator</a>
-</section>
-<section class="country-card" id="indonesia" aria-labelledby="indonesia-h2">
-  <h2 id="indonesia-h2">indonesia phone number generator</h2>
-  <p class="desc">Indonesia: +62 8XX‑XXXX‑XXXX (mobile) or +62 21‑XXXX‑XXXX (Jakarta).</p>
-  <a class="btn" href="indonesia-phone-number-generator.html" aria-label="Open indonesia phone number generator">indonesia phone number generator</a>
-</section>
-<section class="country-card" id="pakistan" aria-labelledby="pakistan-h2">
-  <h2 id="pakistan-h2">pakistan phone number generator</h2>
-  <p class="desc">Pakistan: +92 3XX‑XXXXXXX (mobile) or +92 51‑XXXXXXX (Islamabad).</p>
-  <a class="btn" href="pakistan-phone-number-generator.html" aria-label="Open pakistan phone number generator">pakistan phone number generator</a>
-</section>
-<section class="country-card" id="bangladesh" aria-labelledby="bangladesh-h2">
-  <h2 id="bangladesh-h2">bangladesh phone number generator</h2>
-  <p class="desc">Bangladesh: +880 1X XXX XXXX (mobile) or +880 2 XXX XXXX (Dhaka).</p>
-  <a class="btn" href="bangladesh-phone-number-generator.html" aria-label="Open bangladesh phone number generator">bangladesh phone number generator</a>
-</section>
-<section class="country-card" id="sri-lanka" aria-labelledby="sri-lanka-h2">
-  <h2 id="sri-lanka-h2">sri-lanka phone number generator</h2>
-  <p class="desc">Sri Lanka: +94 7X XXX XXXX (mobile) or +94 11 XXX XXXX (Colombo).</p>
-  <a class="btn" href="sri-lanka-phone-number-generator.html" aria-label="Open sri-lanka phone number generator">sri-lanka phone number generator</a>
-</section>
-<section class="country-card" id="nepal" aria-labelledby="nepal-h2">
-  <h2 id="nepal-h2">nepal phone number generator</h2>
-  <p class="desc">Nepal: +977 98X XXX XXXX (mobile) or +977 1 XXX XXXX (Kathmandu).</p>
-  <a class="btn" href="nepal-phone-number-generator.html" aria-label="Open nepal phone number generator">nepal phone number generator</a>
-</section>
-<section class="country-card" id="turkey" aria-labelledby="turkey-h2">
-  <h2 id="turkey-h2">turkey phone number generator</h2>
-  <p class="desc">Turkey: +90 5XX XXX XX XX (mobile) or +90 212 XXX XX XX (Istanbul Europe).</p>
-  <a class="btn" href="turkey-phone-number-generator.html" aria-label="Open turkey phone number generator">turkey phone number generator</a>
-</section>
-<section class="country-card" id="saudi-arabia" aria-labelledby="saudi-arabia-h2">
-  <h2 id="saudi-arabia-h2">saudi-arabia phone number generator</h2>
-  <p class="desc">Saudi Arabia: +966 5X XXX XXXX (mobile) or +966 11 XXX XXXX (Riyadh).</p>
-  <a class="btn" href="saudi-arabia-phone-number-generator.html" aria-label="Open saudi-arabia phone number generator">saudi-arabia phone number generator</a>
-</section>
-<section class="country-card" id="uae" aria-labelledby="uae-h2">
-  <h2 id="uae-h2">uae phone number generator</h2>
-  <p class="desc">UAE: +971 5X XXX XXXX (mobile) or +971 4 XXX XXXX (Dubai landline).</p>
-  <a class="btn" href="uae-phone-number-generator.html" aria-label="Open uae phone number generator">uae phone number generator</a>
-</section>
-<section class="country-card" id="qatar" aria-labelledby="qatar-h2">
-  <h2 id="qatar-h2">qatar phone number generator</h2>
-  <p class="desc">Qatar: +974 XXXX XXXX (8 digits; mobile often starts 3/5/6/7).</p>
-  <a class="btn" href="qatar-phone-number-generator.html" aria-label="Open qatar phone number generator">qatar phone number generator</a>
-</section>
-<section class="country-card" id="kuwait" aria-labelledby="kuwait-h2">
-  <h2 id="kuwait-h2">kuwait phone number generator</h2>
-  <p class="desc">Kuwait: +965 XXXXXXXX (8 digits; mobiles often start 5/6/9).</p>
-  <a class="btn" href="kuwait-phone-number-generator.html" aria-label="Open kuwait phone number generator">kuwait phone number generator</a>
-</section>
-<section class="country-card" id="oman" aria-labelledby="oman-h2">
-  <h2 id="oman-h2">oman phone number generator</h2>
-  <p class="desc">Oman: +968 9XXXXXXX (mobile) or +968 24XXXXXX (landline).</p>
-  <a class="btn" href="oman-phone-number-generator.html" aria-label="Open oman phone number generator">oman phone number generator</a>
-</section>
-<section class="country-card" id="israel" aria-labelledby="israel-h2">
-  <h2 id="israel-h2">israel phone number generator</h2>
-  <p class="desc">Israel: +972 5X‑XXX‑XXXX (mobile) or +972 2‑XXX‑XXXX (Jerusalem).</p>
-  <a class="btn" href="israel-phone-number-generator.html" aria-label="Open israel phone number generator">israel phone number generator</a>
-</section>
-<section class="country-card" id="iran" aria-labelledby="iran-h2">
-  <h2 id="iran-h2">iran phone number generator</h2>
-  <p class="desc">Iran: +98 9XX XXX XXXX (mobile) or +98 21 XXXX XXXX (Tehran).</p>
-  <a class="btn" href="iran-phone-number-generator.html" aria-label="Open iran phone number generator">iran phone number generator</a>
-</section>
-<section class="country-card" id="iraq" aria-labelledby="iraq-h2">
-  <h2 id="iraq-h2">iraq phone number generator</h2>
-  <p class="desc">Iraq: +964 7X XXX XXXX (mobile) or +964 1 XXX XXXX (Baghdad).</p>
-  <a class="btn" href="iraq-phone-number-generator.html" aria-label="Open iraq phone number generator">iraq phone number generator</a>
-</section>
-<section class="country-card" id="south-africa" aria-labelledby="south-africa-h2">
-  <h2 id="south-africa-h2">south-africa phone number generator</h2>
-  <p class="desc">South Africa: +27 6X/7X XXX XXXX (mobile) or +27 11 XXX XXXX (Johannesburg).</p>
-  <a class="btn" href="south-africa-phone-number-generator.html" aria-label="Open south-africa phone number generator">south-africa phone number generator</a>
-</section>
-<section class="country-card" id="nigeria" aria-labelledby="nigeria-h2">
-  <h2 id="nigeria-h2">nigeria phone number generator</h2>
-  <p class="desc">Nigeria: +234 80X/70X XXX XXXX (mobile) or +234 1 XXX XXXX (Lagos).</p>
-  <a class="btn" href="nigeria-phone-number-generator.html" aria-label="Open nigeria phone number generator">nigeria phone number generator</a>
-</section>
-<section class="country-card" id="kenya" aria-labelledby="kenya-h2">
-  <h2 id="kenya-h2">kenya phone number generator</h2>
-  <p class="desc">Kenya: +254 7X XXX XXXX (mobile) or +254 20 XXX XXXX (Nairobi).</p>
-  <a class="btn" href="kenya-phone-number-generator.html" aria-label="Open kenya phone number generator">kenya phone number generator</a>
-</section>
-<section class="country-card" id="egypt" aria-labelledby="egypt-h2">
-  <h2 id="egypt-h2">egypt phone number generator</h2>
-  <p class="desc">Egypt: +20 1X XXX XXXX (mobile) or +20 2 XXXX XXXX (Cairo).</p>
-  <a class="btn" href="egypt-phone-number-generator.html" aria-label="Open egypt phone number generator">egypt phone number generator</a>
-</section>
-<section class="country-card" id="morocco" aria-labelledby="morocco-h2">
-  <h2 id="morocco-h2">morocco phone number generator</h2>
-  <p class="desc">Morocco: +212 6X/7X mobiles, +212 5X landlines.</p>
-  <a class="btn" href="morocco-phone-number-generator.html" aria-label="Open morocco phone number generator">morocco phone number generator</a>
-</section>
-<section class="country-card" id="algeria" aria-labelledby="algeria-h2">
-  <h2 id="algeria-h2">algeria phone number generator</h2>
-  <p class="desc">Algeria: +213 5X/6X mobiles, +213 21 landline (Algiers).</p>
-  <a class="btn" href="algeria-phone-number-generator.html" aria-label="Open algeria phone number generator">algeria phone number generator</a>
-</section>
-<section class="country-card" id="tunisia" aria-labelledby="tunisia-h2">
-  <h2 id="tunisia-h2">tunisia phone number generator</h2>
-  <p class="desc">Tunisia: +216 2X XXX XXX (mobile) or +216 71 XXX XXX (Tunis).</p>
-  <a class="btn" href="tunisia-phone-number-generator.html" aria-label="Open tunisia phone number generator">tunisia phone number generator</a>
-</section>
-<section class="country-card" id="ethiopia" aria-labelledby="ethiopia-h2">
-  <h2 id="ethiopia-h2">ethiopia phone number generator</h2>
-  <p class="desc">Ethiopia: +251 9X XXX XXXX (mobile) or +251 11 XXX XXXX (Addis Ababa).</p>
-  <a class="btn" href="ethiopia-phone-number-generator.html" aria-label="Open ethiopia phone number generator">ethiopia phone number generator</a>
-</section>
-<section class="country-card" id="ghana" aria-labelledby="ghana-h2">
-  <h2 id="ghana-h2">ghana phone number generator</h2>
-  <p class="desc">Ghana: +233 2X/5X mobiles, +233 30X Accra landlines.</p>
-  <a class="btn" href="ghana-phone-number-generator.html" aria-label="Open ghana phone number generator">ghana phone number generator</a>
-</section>
-<section class="country-card" id="australia" aria-labelledby="australia-h2">
-  <h2 id="australia-h2">australia phone number generator</h2>
-  <p class="desc">Australia: +61 4XX XXX XXX (mobile) or +61 2 XXXX XXXX (NSW landline).</p>
-  <a class="btn" href="australia-phone-number-generator.html" aria-label="Open australia phone number generator">australia phone number generator</a>
-</section>
-<section class="country-card" id="new-zealand" aria-labelledby="new-zealand-h2">
-  <h2 id="new-zealand-h2">new-zealand phone number generator</h2>
-  <p class="desc">New Zealand: +64 2X XXX XXXX (mobile) or +64 9 XXX XXXX (Auckland).</p>
-  <a class="btn" href="new-zealand-phone-number-generator.html" aria-label="Open new-zealand phone number generator">new-zealand phone number generator</a>
-</section>
+      <section class="country-card" id="us" aria-labelledby="us-h2">
+        <h2 id="us-h2">us phone number generator</h2>
+        <p class="desc">Generate US‑style numbers. Format examples: +1 XXX‑XXX‑XXXX, (XXX) XXX‑XXXX.</p>
+        <a class="btn" href="us-phone-number-generator.html" aria-label="Open us phone number generator">us phone number
+          generator</a>
+      </section>
+      <section class="country-card" id="canada" aria-labelledby="canada-h2">
+        <h2 id="canada-h2">canada phone number generator</h2>
+        <p class="desc">Canadian formats mirror NANP: +1 XXX‑XXX‑XXXX with province‑appropriate area codes.</p>
+        <a class="btn" href="canada-phone-number-generator.html" aria-label="Open canada phone number generator">canada
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="mexico" aria-labelledby="mexico-h2">
+        <h2 id="mexico-h2">mexico phone number generator</h2>
+        <p class="desc">Mexico formats: +52 XX XXXX XXXX (landline) or +52 1 XXX XXX XXXX (mobile).</p>
+        <a class="btn" href="mexico-phone-number-generator.html" aria-label="Open mexico phone number generator">mexico
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="brazil" aria-labelledby="brazil-h2">
+        <h2 id="brazil-h2">brazil phone number generator</h2>
+        <p class="desc">Brazil formats: +55 (AA) NNNNN‑NNNN (mobile) with valid DDD area codes.</p>
+        <a class="btn" href="brazil-phone-number-generator.html" aria-label="Open brazil phone number generator">brazil
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="argentina" aria-labelledby="argentina-h2">
+        <h2 id="argentina-h2">argentina phone number generator</h2>
+        <p class="desc">Argentina examples: +54 9 AA NNNN‑NNNN (mobile) or +54 AA NNNN‑NNNN (landline).</p>
+        <a class="btn" href="argentina-phone-number-generator.html"
+          aria-label="Open argentina phone number generator">argentina phone number generator</a>
+      </section>
+      <section class="country-card" id="chile" aria-labelledby="chile-h2">
+        <h2 id="chile-h2">chile phone number generator</h2>
+        <p class="desc">Chile uses 8‑digit local parts: +56 9 NNNN NNNN (mobile), +56 2 NNNN NNNN (Santiago landline).
+        </p>
+        <a class="btn" href="chile-phone-number-generator.html" aria-label="Open chile phone number generator">chile
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="colombia" aria-labelledby="colombia-h2">
+        <h2 id="colombia-h2">colombia phone number generator</h2>
+        <p class="desc">Colombia: +57 3XX XXXX XXXX (mobile), +57 1 XXX XXXX (Bogotá landline).</p>
+        <a class="btn" href="colombia-phone-number-generator.html"
+          aria-label="Open colombia phone number generator">colombia phone number generator</a>
+      </section>
+      <section class="country-card" id="peru" aria-labelledby="peru-h2">
+        <h2 id="peru-h2">peru phone number generator</h2>
+        <p class="desc">Peru: +51 9XX XXX XXX (mobile) or +51 1 XXX XXXX (Lima landline).</p>
+        <a class="btn" href="peru-phone-number-generator.html" aria-label="Open peru phone number generator">peru phone
+          number generator</a>
+      </section>
+      <section class="country-card" id="uk" aria-labelledby="uk-h2">
+        <h2 id="uk-h2">uk phone number generator</h2>
+        <p class="desc">UK formats: +44 7XXXX XXXXXX (mobile), +44 20 XXXX XXXX (London landline).</p>
+        <a class="btn" href="uk-phone-number-generator.html" aria-label="Open uk phone number generator">uk phone number
+          generator</a>
+      </section>
+      <section class="country-card" id="germany" aria-labelledby="germany-h2">
+        <h2 id="germany-h2">germany phone number generator</h2>
+        <p class="desc">Germany: +49 15X XXXX XXXX (mobile) or +49 30 XXXX XXXX (Berlin landline).</p>
+        <a class="btn" href="germany-phone-number-generator.html"
+          aria-label="Open germany phone number generator">germany phone number generator</a>
+      </section>
+      <section class="country-card" id="france" aria-labelledby="france-h2">
+        <h2 id="france-h2">france phone number generator</h2>
+        <p class="desc">France: +33 6 XX XX XX XX (mobile) or +33 1 XX XX XX XX (Île‑de‑France).</p>
+        <a class="btn" href="france-phone-number-generator.html" aria-label="Open france phone number generator">france
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="spain" aria-labelledby="spain-h2">
+        <h2 id="spain-h2">spain phone number generator</h2>
+        <p class="desc">Spain: +34 6XX XXX XXX / +34 7XX XXX XXX (mobile) or +34 9XX XXX XXX (landline).</p>
+        <a class="btn" href="spain-phone-number-generator.html" aria-label="Open spain phone number generator">spain
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="italy" aria-labelledby="italy-h2">
+        <h2 id="italy-h2">italy phone number generator</h2>
+        <p class="desc">Italy: +39 3XX XXX XXXX (mobile) or +39 0X XXXX XXXX (landline).</p>
+        <a class="btn" href="italy-phone-number-generator.html" aria-label="Open italy phone number generator">italy
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="portugal" aria-labelledby="portugal-h2">
+        <h2 id="portugal-h2">portugal phone number generator</h2>
+        <p class="desc">Portugal: +351 9X XXX XXXX (mobile) or +351 2X XXX XXXX (landline).</p>
+        <a class="btn" href="portugal-phone-number-generator.html"
+          aria-label="Open portugal phone number generator">portugal phone number generator</a>
+      </section>
+      <section class="country-card" id="greece" aria-labelledby="greece-h2">
+        <h2 id="greece-h2">greece phone number generator</h2>
+        <p class="desc">Greece: +30 69X XXX XXXX (mobile) or +30 2X XXXX XXXX (landline).</p>
+        <a class="btn" href="greece-phone-number-generator.html" aria-label="Open greece phone number generator">greece
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="ireland" aria-labelledby="ireland-h2">
+        <h2 id="ireland-h2">ireland phone number generator</h2>
+        <p class="desc">Ireland: +353 8X XXX XXXX (mobile), +353 1 XXX XXXX (Dublin landline).</p>
+        <a class="btn" href="ireland-phone-number-generator.html"
+          aria-label="Open ireland phone number generator">ireland phone number generator</a>
+      </section>
+      <section class="country-card" id="netherlands" aria-labelledby="netherlands-h2">
+        <h2 id="netherlands-h2">netherlands phone number generator</h2>
+        <p class="desc">Netherlands: +31 6 XXXXXXXX (mobile), +31 10 XXXX XXXX (Rotterdam landline).</p>
+        <a class="btn" href="netherlands-phone-number-generator.html"
+          aria-label="Open netherlands phone number generator">netherlands phone number generator</a>
+      </section>
+      <section class="country-card" id="belgium" aria-labelledby="belgium-h2">
+        <h2 id="belgium-h2">belgium phone number generator</h2>
+        <p class="desc">Belgium: +32 4XX XX XX XX (mobile) or +32 2 XXX XX XX (Brussels landline).</p>
+        <a class="btn" href="belgium-phone-number-generator.html"
+          aria-label="Open belgium phone number generator">belgium phone number generator</a>
+      </section>
+      <section class="country-card" id="sweden" aria-labelledby="sweden-h2">
+        <h2 id="sweden-h2">sweden phone number generator</h2>
+        <p class="desc">Sweden: +46 7X XXX XX XX (mobile) or +46 8 XXX XX XX (Stockholm landline).</p>
+        <a class="btn" href="sweden-phone-number-generator.html" aria-label="Open sweden phone number generator">sweden
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="norway" aria-labelledby="norway-h2">
+        <h2 id="norway-h2">norway phone number generator</h2>
+        <p class="desc">Norway: +47 4X XX XX XX or +47 9X XX XX XX (mobile), 8‑digit landlines.</p>
+        <a class="btn" href="norway-phone-number-generator.html" aria-label="Open norway phone number generator">norway
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="denmark" aria-labelledby="denmark-h2">
+        <h2 id="denmark-h2">denmark phone number generator</h2>
+        <p class="desc">Denmark: +45 XX XX XX XX (8 digits, no area codes).</p>
+        <a class="btn" href="denmark-phone-number-generator.html"
+          aria-label="Open denmark phone number generator">denmark phone number generator</a>
+      </section>
+      <section class="country-card" id="finland" aria-labelledby="finland-h2">
+        <h2 id="finland-h2">finland phone number generator</h2>
+        <p class="desc">Finland: +358 4X XXX XXXX (mobile) or +358 9 XXX XXXX (Helsinki).</p>
+        <a class="btn" href="finland-phone-number-generator.html"
+          aria-label="Open finland phone number generator">finland phone number generator</a>
+      </section>
+      <section class="country-card" id="switzerland" aria-labelledby="switzerland-h2">
+        <h2 id="switzerland-h2">switzerland phone number generator</h2>
+        <p class="desc">Switzerland: +41 7X XXX XX XX (mobile), +41 22 XXX XX XX (Geneva).</p>
+        <a class="btn" href="switzerland-phone-number-generator.html"
+          aria-label="Open switzerland phone number generator">switzerland phone number generator</a>
+      </section>
+      <section class="country-card" id="austria" aria-labelledby="austria-h2">
+        <h2 id="austria-h2">austria phone number generator</h2>
+        <p class="desc">Austria: +43 6XX XXX XXXX (mobile) or +43 1 XXX XXXX (Vienna).</p>
+        <a class="btn" href="austria-phone-number-generator.html"
+          aria-label="Open austria phone number generator">austria phone number generator</a>
+      </section>
+      <section class="country-card" id="poland" aria-labelledby="poland-h2">
+        <h2 id="poland-h2">poland phone number generator</h2>
+        <p class="desc">Poland: +48 5XX/6XX XXX XXX (mobile), +48 22 XXX XX XX (Warsaw).</p>
+        <a class="btn" href="poland-phone-number-generator.html" aria-label="Open poland phone number generator">poland
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="ukraine" aria-labelledby="ukraine-h2">
+        <h2 id="ukraine-h2">ukraine phone number generator</h2>
+        <p class="desc">Ukraine: +380 67 XXX XXXX (mobile) or +380 44 XXX XX XX (Kyiv landline).</p>
+        <a class="btn" href="ukraine-phone-number-generator.html"
+          aria-label="Open ukraine phone number generator">ukraine phone number generator</a>
+      </section>
+      <section class="country-card" id="china" aria-labelledby="china-h2">
+        <h2 id="china-h2">china phone number generator</h2>
+        <p class="desc">China mobile examples: +86 1XX XXXX XXXX (11 digits). Landline examples: +86 10 XXXX XXXX
+          (Beijing).</p>
+        <a class="btn" href="china-phone-number-generator.html" aria-label="Open china phone number generator">china
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="india" aria-labelledby="india-h2">
+        <h2 id="india-h2">india phone number generator</h2>
+        <p class="desc">India: +91 XXXXX XXXXX (mobile), +91 11 XXXX XXXX (Delhi landline).</p>
+        <a class="btn" href="india-phone-number-generator.html" aria-label="Open india phone number generator">india
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="japan" aria-labelledby="japan-h2">
+        <h2 id="japan-h2">japan phone number generator</h2>
+        <p class="desc">Japan: +81 090/080‑XXXX‑XXXX (mobile) or +81 3‑XXXX‑XXXX (Tokyo).</p>
+        <a class="btn" href="japan-phone-number-generator.html" aria-label="Open japan phone number generator">japan
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="south-korea" aria-labelledby="south-korea-h2">
+        <h2 id="south-korea-h2">south-korea phone number generator</h2>
+        <p class="desc">South Korea: +82 010‑XXXX‑XXXX (mobile) or +82 2‑XXXX‑XXXX (Seoul landline).</p>
+        <a class="btn" href="south-korea-phone-number-generator.html"
+          aria-label="Open south-korea phone number generator">south-korea phone number generator</a>
+      </section>
+      <section class="country-card" id="hong-kong" aria-labelledby="hong-kong-h2">
+        <h2 id="hong-kong-h2">hong-kong phone number generator</h2>
+        <p class="desc">Hong Kong: +852 XXXX XXXX (8 digits; mobile typically starts with 5/6/9).</p>
+        <a class="btn" href="hong-kong-phone-number-generator.html"
+          aria-label="Open hong-kong phone number generator">hong-kong phone number generator</a>
+      </section>
+      <section class="country-card" id="taiwan" aria-labelledby="taiwan-h2">
+        <h2 id="taiwan-h2">taiwan phone number generator</h2>
+        <p class="desc">Taiwan: +886 9XX XXX XXX (mobile) or +886 2 XXXX XXXX (Taipei).</p>
+        <a class="btn" href="taiwan-phone-number-generator.html" aria-label="Open taiwan phone number generator">taiwan
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="singapore" aria-labelledby="singapore-h2">
+        <h2 id="singapore-h2">singapore phone number generator</h2>
+        <p class="desc">Singapore: +65 XXXX XXXX (8 digits; mobile often starts 8/9).</p>
+        <a class="btn" href="singapore-phone-number-generator.html"
+          aria-label="Open singapore phone number generator">singapore phone number generator</a>
+      </section>
+      <section class="country-card" id="malaysia" aria-labelledby="malaysia-h2">
+        <h2 id="malaysia-h2">malaysia phone number generator</h2>
+        <p class="desc">Malaysia: +60 1X‑XXX XXXX (mobile) or +60 3‑XXXX XXXX (Kuala Lumpur).</p>
+        <a class="btn" href="malaysia-phone-number-generator.html"
+          aria-label="Open malaysia phone number generator">malaysia phone number generator</a>
+      </section>
+      <section class="country-card" id="thailand" aria-labelledby="thailand-h2">
+        <h2 id="thailand-h2">thailand phone number generator</h2>
+        <p class="desc">Thailand: +66 8X‑XXX‑XXXX / +66 9X‑XXX‑XXXX (mobile), +66 2‑XXXX‑XXXX (Bangkok).</p>
+        <a class="btn" href="thailand-phone-number-generator.html"
+          aria-label="Open thailand phone number generator">thailand phone number generator</a>
+      </section>
+      <section class="country-card" id="vietnam" aria-labelledby="vietnam-h2">
+        <h2 id="vietnam-h2">vietnam phone number generator</h2>
+        <p class="desc">Vietnam: +84 9X or 3X XXX XXXX (mobile) or +84 24 XXXX XXXX (Hanoi).</p>
+        <a class="btn" href="vietnam-phone-number-generator.html"
+          aria-label="Open vietnam phone number generator">vietnam phone number generator</a>
+      </section>
+      <section class="country-card" id="philippines" aria-labelledby="philippines-h2">
+        <h2 id="philippines-h2">philippines phone number generator</h2>
+        <p class="desc">Philippines: +63 9XX XXX XXXX (mobile) or +63 2 XXXX XXXX (Metro Manila landline).</p>
+        <a class="btn" href="philippines-phone-number-generator.html"
+          aria-label="Open philippines phone number generator">philippines phone number generator</a>
+      </section>
+      <section class="country-card" id="indonesia" aria-labelledby="indonesia-h2">
+        <h2 id="indonesia-h2">indonesia phone number generator</h2>
+        <p class="desc">Indonesia: +62 8XX‑XXXX‑XXXX (mobile) or +62 21‑XXXX‑XXXX (Jakarta).</p>
+        <a class="btn" href="indonesia-phone-number-generator.html"
+          aria-label="Open indonesia phone number generator">indonesia phone number generator</a>
+      </section>
+      <section class="country-card" id="pakistan" aria-labelledby="pakistan-h2">
+        <h2 id="pakistan-h2">pakistan phone number generator</h2>
+        <p class="desc">Pakistan: +92 3XX‑XXXXXXX (mobile) or +92 51‑XXXXXXX (Islamabad).</p>
+        <a class="btn" href="pakistan-phone-number-generator.html"
+          aria-label="Open pakistan phone number generator">pakistan phone number generator</a>
+      </section>
+      <section class="country-card" id="bangladesh" aria-labelledby="bangladesh-h2">
+        <h2 id="bangladesh-h2">bangladesh phone number generator</h2>
+        <p class="desc">Bangladesh: +880 1X XXX XXXX (mobile) or +880 2 XXX XXXX (Dhaka).</p>
+        <a class="btn" href="bangladesh-phone-number-generator.html"
+          aria-label="Open bangladesh phone number generator">bangladesh phone number generator</a>
+      </section>
+      <section class="country-card" id="sri-lanka" aria-labelledby="sri-lanka-h2">
+        <h2 id="sri-lanka-h2">sri-lanka phone number generator</h2>
+        <p class="desc">Sri Lanka: +94 7X XXX XXXX (mobile) or +94 11 XXX XXXX (Colombo).</p>
+        <a class="btn" href="sri-lanka-phone-number-generator.html"
+          aria-label="Open sri-lanka phone number generator">sri-lanka phone number generator</a>
+      </section>
+      <section class="country-card" id="nepal" aria-labelledby="nepal-h2">
+        <h2 id="nepal-h2">nepal phone number generator</h2>
+        <p class="desc">Nepal: +977 98X XXX XXXX (mobile) or +977 1 XXX XXXX (Kathmandu).</p>
+        <a class="btn" href="nepal-phone-number-generator.html" aria-label="Open nepal phone number generator">nepal
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="turkey" aria-labelledby="turkey-h2">
+        <h2 id="turkey-h2">turkey phone number generator</h2>
+        <p class="desc">Turkey: +90 5XX XXX XX XX (mobile) or +90 212 XXX XX XX (Istanbul Europe).</p>
+        <a class="btn" href="turkey-phone-number-generator.html" aria-label="Open turkey phone number generator">turkey
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="saudi-arabia" aria-labelledby="saudi-arabia-h2">
+        <h2 id="saudi-arabia-h2">saudi-arabia phone number generator</h2>
+        <p class="desc">Saudi Arabia: +966 5X XXX XXXX (mobile) or +966 11 XXX XXXX (Riyadh).</p>
+        <a class="btn" href="saudi-arabia-phone-number-generator.html"
+          aria-label="Open saudi-arabia phone number generator">saudi-arabia phone number generator</a>
+      </section>
+      <section class="country-card" id="uae" aria-labelledby="uae-h2">
+        <h2 id="uae-h2">uae phone number generator</h2>
+        <p class="desc">UAE: +971 5X XXX XXXX (mobile) or +971 4 XXX XXXX (Dubai landline).</p>
+        <a class="btn" href="uae-phone-number-generator.html" aria-label="Open uae phone number generator">uae phone
+          number generator</a>
+      </section>
+      <section class="country-card" id="qatar" aria-labelledby="qatar-h2">
+        <h2 id="qatar-h2">qatar phone number generator</h2>
+        <p class="desc">Qatar: +974 XXXX XXXX (8 digits; mobile often starts 3/5/6/7).</p>
+        <a class="btn" href="qatar-phone-number-generator.html" aria-label="Open qatar phone number generator">qatar
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="kuwait" aria-labelledby="kuwait-h2">
+        <h2 id="kuwait-h2">kuwait phone number generator</h2>
+        <p class="desc">Kuwait: +965 XXXXXXXX (8 digits; mobiles often start 5/6/9).</p>
+        <a class="btn" href="kuwait-phone-number-generator.html" aria-label="Open kuwait phone number generator">kuwait
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="oman" aria-labelledby="oman-h2">
+        <h2 id="oman-h2">oman phone number generator</h2>
+        <p class="desc">Oman: +968 9XXXXXXX (mobile) or +968 24XXXXXX (landline).</p>
+        <a class="btn" href="oman-phone-number-generator.html" aria-label="Open oman phone number generator">oman phone
+          number generator</a>
+      </section>
+      <section class="country-card" id="israel" aria-labelledby="israel-h2">
+        <h2 id="israel-h2">israel phone number generator</h2>
+        <p class="desc">Israel: +972 5X‑XXX‑XXXX (mobile) or +972 2‑XXX‑XXXX (Jerusalem).</p>
+        <a class="btn" href="israel-phone-number-generator.html" aria-label="Open israel phone number generator">israel
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="iran" aria-labelledby="iran-h2">
+        <h2 id="iran-h2">iran phone number generator</h2>
+        <p class="desc">Iran: +98 9XX XXX XXXX (mobile) or +98 21 XXXX XXXX (Tehran).</p>
+        <a class="btn" href="iran-phone-number-generator.html" aria-label="Open iran phone number generator">iran phone
+          number generator</a>
+      </section>
+      <section class="country-card" id="iraq" aria-labelledby="iraq-h2">
+        <h2 id="iraq-h2">iraq phone number generator</h2>
+        <p class="desc">Iraq: +964 7X XXX XXXX (mobile) or +964 1 XXX XXXX (Baghdad).</p>
+        <a class="btn" href="iraq-phone-number-generator.html" aria-label="Open iraq phone number generator">iraq phone
+          number generator</a>
+      </section>
+      <section class="country-card" id="south-africa" aria-labelledby="south-africa-h2">
+        <h2 id="south-africa-h2">south-africa phone number generator</h2>
+        <p class="desc">South Africa: +27 6X/7X XXX XXXX (mobile) or +27 11 XXX XXXX (Johannesburg).</p>
+        <a class="btn" href="south-africa-phone-number-generator.html"
+          aria-label="Open south-africa phone number generator">south-africa phone number generator</a>
+      </section>
+      <section class="country-card" id="nigeria" aria-labelledby="nigeria-h2">
+        <h2 id="nigeria-h2">nigeria phone number generator</h2>
+        <p class="desc">Nigeria: +234 80X/70X XXX XXXX (mobile) or +234 1 XXX XXXX (Lagos).</p>
+        <a class="btn" href="nigeria-phone-number-generator.html"
+          aria-label="Open nigeria phone number generator">nigeria phone number generator</a>
+      </section>
+      <section class="country-card" id="kenya" aria-labelledby="kenya-h2">
+        <h2 id="kenya-h2">kenya phone number generator</h2>
+        <p class="desc">Kenya: +254 7X XXX XXXX (mobile) or +254 20 XXX XXXX (Nairobi).</p>
+        <a class="btn" href="kenya-phone-number-generator.html" aria-label="Open kenya phone number generator">kenya
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="egypt" aria-labelledby="egypt-h2">
+        <h2 id="egypt-h2">egypt phone number generator</h2>
+        <p class="desc">Egypt: +20 1X XXX XXXX (mobile) or +20 2 XXXX XXXX (Cairo).</p>
+        <a class="btn" href="egypt-phone-number-generator.html" aria-label="Open egypt phone number generator">egypt
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="morocco" aria-labelledby="morocco-h2">
+        <h2 id="morocco-h2">morocco phone number generator</h2>
+        <p class="desc">Morocco: +212 6X/7X mobiles, +212 5X landlines.</p>
+        <a class="btn" href="morocco-phone-number-generator.html"
+          aria-label="Open morocco phone number generator">morocco phone number generator</a>
+      </section>
+      <section class="country-card" id="algeria" aria-labelledby="algeria-h2">
+        <h2 id="algeria-h2">algeria phone number generator</h2>
+        <p class="desc">Algeria: +213 5X/6X mobiles, +213 21 landline (Algiers).</p>
+        <a class="btn" href="algeria-phone-number-generator.html"
+          aria-label="Open algeria phone number generator">algeria phone number generator</a>
+      </section>
+      <section class="country-card" id="tunisia" aria-labelledby="tunisia-h2">
+        <h2 id="tunisia-h2">tunisia phone number generator</h2>
+        <p class="desc">Tunisia: +216 2X XXX XXX (mobile) or +216 71 XXX XXX (Tunis).</p>
+        <a class="btn" href="tunisia-phone-number-generator.html"
+          aria-label="Open tunisia phone number generator">tunisia phone number generator</a>
+      </section>
+      <section class="country-card" id="ethiopia" aria-labelledby="ethiopia-h2">
+        <h2 id="ethiopia-h2">ethiopia phone number generator</h2>
+        <p class="desc">Ethiopia: +251 9X XXX XXXX (mobile) or +251 11 XXX XXXX (Addis Ababa).</p>
+        <a class="btn" href="ethiopia-phone-number-generator.html"
+          aria-label="Open ethiopia phone number generator">ethiopia phone number generator</a>
+      </section>
+      <section class="country-card" id="ghana" aria-labelledby="ghana-h2">
+        <h2 id="ghana-h2">ghana phone number generator</h2>
+        <p class="desc">Ghana: +233 2X/5X mobiles, +233 30X Accra landlines.</p>
+        <a class="btn" href="ghana-phone-number-generator.html" aria-label="Open ghana phone number generator">ghana
+          phone number generator</a>
+      </section>
+      <section class="country-card" id="australia" aria-labelledby="australia-h2">
+        <h2 id="australia-h2">australia phone number generator</h2>
+        <p class="desc">Australia: +61 4XX XXX XXX (mobile) or +61 2 XXXX XXXX (NSW landline).</p>
+        <a class="btn" href="australia-phone-number-generator.html"
+          aria-label="Open australia phone number generator">australia phone number generator</a>
+      </section>
+      <section class="country-card" id="new-zealand" aria-labelledby="new-zealand-h2">
+        <h2 id="new-zealand-h2">new-zealand phone number generator</h2>
+        <p class="desc">New Zealand: +64 2X XXX XXXX (mobile) or +64 9 XXX XXXX (Auckland).</p>
+        <a class="btn" href="new-zealand-phone-number-generator.html"
+          aria-label="Open new-zealand phone number generator">new-zealand phone number generator</a>
+      </section>
     </div>
   </main>
 
@@ -434,16 +606,16 @@ button.btn:focus-visible, button.button:focus-visible, button.action:focus-visib
 
   <script>
     // Year
-    (function() {
+    (function () {
       var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     })();
 
     // Simple filter
-    (function() {
+    (function () {
       const input = document.getElementById('search');
       const grid = document.getElementById('country-grid');
       if (!input || !grid) return;
-      input.addEventListener('input', function() {
+      input.addEventListener('input', function () {
         const q = this.value.trim().toLowerCase();
         const cards = grid.querySelectorAll('.country-card');
         cards.forEach(card => {
@@ -454,7 +626,7 @@ button.btn:focus-visible, button.button:focus-visible, button.action:focus-visib
     })();
 
     // Back to top
-    (function() {
+    (function () {
       const btn = document.getElementById('backToTop');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
@@ -463,4 +635,5 @@ button.btn:focus-visible, button.button:focus-visible, button.action:focus-visib
     })();
   </script>
 </body>
+
 </html>
