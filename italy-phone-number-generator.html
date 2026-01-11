@@ -4,20 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>italy phone number generator | Free generator</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☎️</text></svg>" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="assets/styles.css" />
   <meta name="description" content="Italy: +39 3XX XXX XXXX (mobile) or +39 0X XXXX XXXX (landline). Not real/assigned numbers." />
-  <link rel="canonical" href="https://www.example.com/italy-phone-number-generator" />
+  <link rel="canonical" href="https://www.phonenumbergenerator.dev/italy-phone-number-generator" />
   <meta name="robots" content="index,follow" />
+  
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; margin: 0; padding: 24px 16px; max-width: 780px; line-height: 1.6; }
-    a { color: #0e7490; }
-    .btn { display:inline-block; padding:10px 14px; border:1px solid #06b6d4; border-radius:999px; text-decoration:none; background:#ecfeff; font-weight:600; cursor:pointer; }
-    .box { border:1px solid #e5e7eb; border-radius:14px; padding:16px; background:#fff; }
-    h1 { text-transform: lowercase; margin: 0 0 8px; }
-    h2 { margin: 18px 0 8px; text-transform: lowercase; }
-    .mini { color:#6b7280; font-size:14px; }
-    code { padding: 2px 6px; border-radius:8px; background:#f3f4f6; display:inline-block; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .box { margin-top: 20px; position: relative; }
+    .sample-item { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 12px; 
+      margin-bottom: 8px; 
+      background: #f9fafb; 
+      border: 1px solid #e5e7eb; 
+      border-radius: 10px; 
+      font-family: monospace; 
+      font-size: 1.1em;
+    }
+    .copy-btn {
+      padding: 4px 8px;
+      font-size: 0.8em;
+      background: #eef2ff;
+      color: #4f46e5;
+      border: 1px solid #e0e7ff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .copy-btn:hover { background: #e0e7ff; }
+    .controls { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    select { padding: 8px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; }
   </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "italy phone number generator", "url": "https://www.example.com/italy-phone-number-generator", "description": "Generate italy\u2011style phone numbers for testing.", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/"}, {"@type": "ListItem", "position": 2, "name": "italy phone number generator", "item": "https://www.example.com/italy-phone-number-generator"}]}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "italy phone number generator", "url": "https://www.phonenumbergenerator.dev/italy-phone-number-generator", "description": "Generate italy\u2011style phone numbers for testing.", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.phonenumbergenerator.dev/"}, {"@type": "ListItem", "position": 2, "name": "italy phone number generator", "item": "https://www.phonenumbergenerator.dev/italy-phone-number-generator"}]}}</script>
 </head>
 <body>
   <nav class="mini"><a href="index.html">← Back to phone number generator (all countries)</a></nav>
@@ -31,8 +61,18 @@
     <p>Italy: +39 3XX XXX XXXX (mobile) or +39 0X XXXX XXXX (landline).</p>
 
     <h2>try a few</h2>
-    <p id="samples" aria-live="polite">Loading…</p>
-    <button class="btn" id="gen">generate more</button>
+    
+    <div class="controls">
+      <label for="count">Quantity:</label>
+      <select id="count">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+      <button class="btn" id="gen">generate more</button>
+    </div>
+    <div id="samples" aria-live="polite">Loading...</div>
   </main>
 
   <footer class="mini" style="margin-top:18px">
@@ -40,22 +80,48 @@
   </footer>
 
   <script>
-    // Replace each X with a random digit 0-9
+    const PATTERNS = ["+39 3XX XXX XXXX", "+39 0X XXXX XXXX"];
+    
     function fillDigits(pattern) {
       return pattern.replace(/X/g, () => Math.floor(Math.random()*10));
     }
-    const PATTERNS = ["+39 3XX XXX XXXX", "+39 0X XXXX XXXX"];
 
     function makeSample() {
       const p = PATTERNS[Math.floor(Math.random()*PATTERNS.length)];
       return fillDigits(p);
     }
-    function render(n=5) {
-      const out = Array.from({length:n}, makeSample).map(s=>`<code>${s}</code>`).join('<br>');
-      document.getElementById('samples').innerHTML = out;
+
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      });
     }
+
+    function render() {
+      const n = parseInt(document.getElementById('count').value);
+      const container = document.getElementById('samples');
+      container.innerHTML = '';
+      
+      for(let i=0; i<n; i++) {
+        const num = makeSample();
+        const div = document.createElement('div');
+        div.className = 'sample-item';
+        div.innerHTML = `<span>${num}</span><button class="copy-btn" onclick="copyToClipboard('${num}', this)">Copy</button>`;
+        container.appendChild(div);
+      }
+    }
+
     render();
-    document.getElementById('gen').addEventListener('click', ()=>render());
-  </script>
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+    document.getElementById('gen').addEventListener('click', () => render());
+    document.getElementById('count').addEventListener('change', () => render());</script>
 </body>
 </html>
